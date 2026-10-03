@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Medusa Heads — What Are You Seeking?</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+:root{--night:#070b12;--deep:#0b111b;--stone:#d9d3c7;--ink:#f1eee7;--muted:#8f938f;--bronze:#b79a63;--bronze2:#6f5b39;--cyan:#79d7e8;--line:#292a28}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--night);color:var(--ink);font-family:Inter,sans-serif}
+body{background:
+radial-gradient(circle at 78% 45%,rgba(183,154,99,.08),transparent 30%),
+var(--night)}
+header{height:78px;border-bottom:1px solid #24241f;display:flex;align-items:center;justify-content:space-between;padding:0 4.5vw;background:rgba(7,11,18,.9)}
+.brand{display:flex;gap:13px;align-items:center}.seal{width:31px;height:31px;border:1px solid var(--bronze);border-radius:50%;display:grid;place-items:center;font:600 18px "Cormorant Garamond";color:var(--bronze)}
+.brandname{font:600 17px "Cormorant Garamond";letter-spacing:.16em}.brandname small{display:block;font:400 8px IBM Plex Mono;color:#77786f;letter-spacing:.22em;margin-top:5px}
+.step{font:400 9px IBM Plex Mono;color:#74766f;letter-spacing:.15em}.step b{color:var(--bronze);font-weight:400}
+main{min-height:calc(100vh - 78px);display:grid;grid-template-columns:minmax(0,1.03fr) minmax(420px,.97fr);gap:5vw;align-items:center;padding:6vh 6vw}
+.kicker{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.22em;margin-bottom:22px}
+h1{font:500 clamp(66px,7.2vw,116px)/.77 "Cormorant Garamond",serif;letter-spacing:-.045em;margin:0 0 30px;text-transform:uppercase}
+.lead{max-width:630px;font-size:16px;line-height:1.7;color:#aeb0aa;margin-bottom:20px}.acronym{display:flex;align-items:baseline;gap:13px;margin:0 0 30px;color:#777a75}.acronym b{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.18em}.acronym span{font:400 9px IBM Plex Mono;letter-spacing:.055em}
+.prompt{position:relative;border:1px solid #3c362a;background:linear-gradient(135deg,rgba(21,20,17,.92),rgba(10,16,25,.9))}
+.prompt:before,.prompt:after{content:"";position:absolute;width:12px;height:12px;border-color:var(--bronze);opacity:.7}.prompt:before{left:-1px;top:-1px;border-left:1px solid;border-top:1px solid}.prompt:after{right:-1px;bottom:-1px;border-right:1px solid;border-bottom:1px solid}
+textarea{width:100%;min-height:160px;display:block;border:0;outline:0;resize:vertical;background:transparent;color:var(--ink);padding:23px 24px;font:400 15px/1.65 Inter}
+textarea::placeholder{color:#676a67}.promptfoot{border-top:1px solid #2d2b25;padding:13px 15px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.whisper{font:400 9px IBM Plex Mono;color:#6e706a;letter-spacing:.06em}
+button{cursor:pointer}.awaken{border:1px solid var(--bronze);background:transparent;color:#e4d3ae;padding:14px 18px;font:500 10px IBM Plex Mono;letter-spacing:.13em}.awaken:hover{background:var(--bronze);color:#080b10}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.chip{border:1px solid #292a27;background:#0b1017;color:#898c87;padding:9px 11px;font:400 8px IBM Plex Mono;letter-spacing:.1em}.chip:hover{border-color:var(--bronze2);color:#c8b991}
+.rule{margin-top:22px;display:flex;align-items:center;gap:12px;color:#666a67;font:400 9px IBM Plex Mono;letter-spacing:.08em}.rule:before{content:"";width:42px;height:1px;background:var(--bronze2)}
+.temple{height:min(640px,70vh);min-height:510px;position:relative;overflow:hidden;border-left:1px solid #24241f}
+.temple:before{content:"";position:absolute;inset:7% 4%;border:1px solid rgba(183,154,99,.08);border-radius:50% 50% 0 0}
+.greek{position:absolute;inset:16px 0 auto 0;height:8px;opacity:.35;background:repeating-linear-gradient(90deg,var(--bronze2) 0 10px,transparent 10px 16px,var(--bronze2) 16px 20px,transparent 20px 28px)}
+.medusa{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:350px;height:430px}
+.face{position:absolute;left:102px;top:91px;width:150px;height:208px;border:1px solid rgba(217,211,199,.45);border-radius:48% 48% 45% 45%;filter:drop-shadow(0 0 18px rgba(183,154,99,.05))}
+.face:before{content:"";position:absolute;left:38px;top:78px;width:73px;height:1px;background:rgba(217,211,199,.22);box-shadow:0 34px 0 rgba(217,211,199,.12),0 71px 0 rgba(217,211,199,.09)}
+.neck{position:absolute;left:176px;top:300px;height:72px;border-left:1px solid rgba(217,211,199,.3)}
+.snake{position:absolute;border:1px solid rgba(183,154,99,.35);border-color:rgba(183,154,99,.35) transparent transparent rgba(183,154,99,.35);border-radius:50%;transition:.5s}
+.s1{width:170px;height:90px;left:20px;top:48px;transform:rotate(23deg)}.s2{width:170px;height:110px;right:6px;top:38px;transform:rotate(132deg)}
+.s3{width:155px;height:95px;left:5px;top:172px;transform:rotate(-22deg)}.s4{width:170px;height:95px;right:-5px;top:178px;transform:rotate(192deg)}
+.s5{width:130px;height:85px;left:36px;bottom:26px;transform:rotate(22deg)}.s6{width:130px;height:85px;right:28px;bottom:20px;transform:rotate(122deg)}
+.eye{position:absolute;width:24px;height:12px;border:1px solid #555047;border-radius:50%;transition:.4s;background:#080d14}.eye:after{content:"";position:absolute;width:4px;height:4px;border-radius:50%;background:#61583f;left:9px;top:3px}
+.e1{left:45px;top:70px}.e2{right:34px;top:65px}.e3{left:20px;top:212px}.e4{right:5px;top:213px}.e5{left:72px;bottom:43px}.e6{right:63px;bottom:36px}
+.awake .snake{border-color:rgba(183,154,99,.7) transparent transparent rgba(183,154,99,.7)}.awake .eye{border-color:var(--cyan);box-shadow:0 0 15px rgba(121,215,232,.45)}.awake .eye:after{background:var(--cyan)}
+.ring{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:320px;height:320px;border:1px solid rgba(183,154,99,.1);border-radius:50%}.ring:before{content:"";position:absolute;inset:30px;border:1px dashed rgba(183,154,99,.08);border-radius:50%}
+.caption{position:absolute;left:25px;bottom:24px;font:400 8px/1.8 IBM Plex Mono;color:#5e625e;letter-spacing:.12em}.caption b{color:var(--bronze);font-weight:400}
+.quote{position:absolute;right:20px;bottom:22px;writing-mode:vertical-rl;font:500 9px "Cormorant Garamond";letter-spacing:.16em;color:#575349}
+@media(max-width:950px){main{grid-template-columns:1fr}.temple{height:480px;min-height:0;border-left:0;border-top:1px solid #24241f}h1{font-size:clamp(64px,18vw,95px)}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="seal">M</div><div class="brandname">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></div></div><div class="step">HEAD BUILDER <b>/ 001</b></div></header>
+<main>
+<section>
+<div class="kicker">DESIGN YOUR HEAD / THE AWAKENING</div>
+<h1>WHAT ARE<br>YOU SEEKING?</h1>
+<p class="lead">Describe the commercial opportunity you want Medusa to find. Speak naturally — Medusa will interpret what makes a business valuable to you, then let you review the Head before it searches.</p><div class="acronym"><b>MEDUSA</b><span>Multi-Eyed Digital Understanding Scanner for Acquisition</span></div>
+<div class="prompt">
+<textarea id="brief" aria-label="Describe the commercial opportunity" placeholder="We maintain commercial refrigeration systems and want larger independent hotels with substantial food, weddings and events operations in South Wales..."></textarea>
+<div class="promptfoot"><span class="whisper" id="state">YOUR KNOWLEDGE BECOMES THE HEAD</span><button class="awaken" id="go">AWAKEN MY HEAD →</button></div>
+</div>
+<div class="chips">
+<button class="chip" data-v="We want to find new customers that show clear public evidence they could benefit from our service.">NEW CUSTOMERS</button>
+<button class="chip" data-v="We want to find businesses showing signs that their current supplier or solution could be replaced.">COMPETITOR REPLACEMENT</button>
+<button class="chip" data-v="We want to find suitable distributors with the market reach and customer base for our products.">DISTRIBUTORS</button>
+</div>
+<div class="rule">MEDUSA INTERPRETS. YOU VERIFY. NOTHING RUNS UNTIL YOU APPROVE IT.</div>
+</section>
+<aside class="temple" id="temple">
+<div class="greek"></div><div class="ring"></div>
+<div class="medusa"><div class="face"></div><div class="neck"></div>
+<div class="snake s1"></div><div class="snake s2"></div><div class="snake s3"></div><div class="snake s4"></div><div class="snake s5"></div><div class="snake s6"></div>
+<div class="eye e1"></div><div class="eye e2"></div><div class="eye e3"></div><div class="eye e4"></div><div class="eye e5"></div><div class="eye e6"></div></div>
+<div class="caption">HEAD / <b id="headstate">DORMANT</b><br>SIGNALS / UNDEFINED<br>EVIDENCE / WAITING</div>
+<div class="quote">MANY EYES · ONE PURPOSE</div>
+</aside>
+</main>
+<script>
+const t=document.getElementById('temple'),b=document.getElementById('brief'),s=document.getElementById('state'),hs=document.getElementById('headstate');
+function sync(){let n=b.value.trim().length;t.classList.toggle('awake',n>18);hs.textContent=n>18?'AWAKENING':'DORMANT';s.textContent=n>18?'MEDUSA IS INTERPRETING YOUR INTENT':'YOUR KNOWLEDGE BECOMES THE HEAD'}
+b.addEventListener('input',sync);document.querySelectorAll('.chip').forEach(x=>x.onclick=()=>{b.value=x.dataset.v;sync();b.focus()});
+document.getElementById('go').onclick=()=>{if(b.value.trim().length<20){b.focus();return}hs.textContent='READY';alert('Prototype handoff: Page 02 — Medusa interprets your intent')};
+</script>
+</body></html>

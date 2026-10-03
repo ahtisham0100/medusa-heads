@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Medusa Heads — Test Your Head</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+:root{--night:#070b12;--panel:#0b1017;--ink:#f1eee7;--muted:#8d918d;--bronze:#b79a63;--bronze2:#6f5b39;--cyan:#79d7e8;--line:#2c2b26;--green:#8fbf9d}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--night);color:var(--ink);font-family:Inter,sans-serif}
+body{background:radial-gradient(circle at 83% 30%,rgba(183,154,99,.075),transparent 29%),var(--night)}
+header{height:76px;border-bottom:1px solid #24241f;display:flex;align-items:center;justify-content:space-between;padding:0 4vw}
+.brand{display:flex;gap:13px;align-items:center}.seal{width:31px;height:31px;border:1px solid var(--bronze);border-radius:50%;display:grid;place-items:center;font:600 18px "Cormorant Garamond";color:var(--bronze)}
+.brandname{font:600 17px "Cormorant Garamond";letter-spacing:.16em}.brandname small{display:block;font:400 8px IBM Plex Mono;color:#77786f;letter-spacing:.22em;margin-top:5px}
+.step{font:400 9px IBM Plex Mono;color:#74766f;letter-spacing:.15em}.step b{color:var(--bronze);font-weight:400}
+main{max-width:1450px;margin:auto;padding:4.5vh 5vw 6vh}.hero{display:flex;justify-content:space-between;align-items:end;gap:50px;margin-bottom:28px}
+.kicker{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.22em;margin-bottom:12px}
+h1{font:500 clamp(54px,6vw,92px)/.83 "Cormorant Garamond";letter-spacing:-.04em;margin:0;text-transform:uppercase}
+.explain{max-width:510px;color:#9da09b;font-size:14px;line-height:1.7}.explain b{color:#d8d2c5;font-weight:500}
+.shell{display:grid;grid-template-columns:1fr 330px;gap:18px}.panel,.side{border:1px solid #343129;background:rgba(10,15,22,.86)}
+.panelhead{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font:400 9px IBM Plex Mono;color:#777b76;letter-spacing:.1em}.panelhead b{color:var(--green);font-weight:400}
+.content{padding:24px}.source-title{font:500 28px "Cormorant Garamond";margin:0 0 5px}.source-copy{color:#858985;font-size:12px;line-height:1.55;margin-bottom:20px}
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:12px}.method{border:1px solid #303029;min-height:160px;padding:18px;position:relative;background:#0a1017}.method.active{border-color:var(--bronze2);background:rgba(183,154,99,.035)}
+.method .num{font:400 8px IBM Plex Mono;color:var(--bronze);letter-spacing:.12em}.method h3{font:500 21px "Cormorant Garamond";margin:10px 0 6px}.method p{font-size:11px;line-height:1.55;color:#7f837f;margin:0 0 14px}
+.method button{border:1px solid #393832;background:transparent;color:#aaa69b;padding:8px 10px;font:400 8px IBM Plex Mono;letter-spacing:.08em;cursor:pointer}.method button:hover{border-color:var(--bronze);color:#d9c8a1}
+textarea{width:100%;height:120px;background:#080d13;border:1px solid #2e302b;color:#d8d7d0;padding:13px;font:400 11px/1.6 IBM Plex Mono;resize:vertical;outline:0;margin-top:12px}textarea:focus{border-color:var(--bronze2)}
+.sample{display:flex;justify-content:space-between;align-items:center;margin-top:17px;padding-top:16px;border-top:1px solid #282923}.sample label{font:500 9px IBM Plex Mono;color:#9b9e99;letter-spacing:.08em}.sample small{display:block;color:#666b67;font:400 8px IBM Plex Mono;margin-top:5px}
+.counter{display:flex;align-items:center;border:1px solid #34352f}.counter button{width:34px;height:34px;border:0;background:transparent;color:#9fa29c;font-size:16px;cursor:pointer}.counter span{width:45px;text-align:center;font:500 10px IBM Plex Mono;color:#ddd3bd}
+.side{padding:20px;height:max-content}.side h2{font:500 27px "Cormorant Garamond";margin:0}.sub{font:400 8px IBM Plex Mono;color:#686d69;letter-spacing:.1em;margin-top:4px}
+.orbit{width:170px;height:170px;border:1px solid rgba(183,154,99,.26);border-radius:50%;margin:24px auto;position:relative;display:grid;place-items:center}.orbit:before{content:"";position:absolute;inset:18px;border:1px dashed rgba(183,154,99,.16);border-radius:50%}
+.orbit strong{font:500 42px "Cormorant Garamond";color:#e4dac6}.orbit span{display:block;font:400 7px IBM Plex Mono;color:#6e736f;text-align:center;letter-spacing:.12em;margin-top:-8px}
+.eye{position:absolute;width:20px;height:10px;border:1px solid var(--cyan);border-radius:50%;box-shadow:0 0 12px rgba(121,215,232,.3)}.e1{top:-5px;left:74px}.e2{right:7px;top:42px}.e3{right:20px;bottom:16px}.e4{left:21px;bottom:16px}.e5{left:-6px;top:66px}
+.metric{display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid #282923;font:400 8px IBM Plex Mono;color:#777b77}.metric b{color:#c6b891;font-weight:400}
+.note{margin-top:15px;border-left:1px solid var(--bronze2);padding-left:11px;color:#818581;font-size:11px;line-height:1.55}.note b{display:block;color:#c3b58f;font:500 8px IBM Plex Mono;letter-spacing:.1em;margin-bottom:5px}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:20px}.foot{font:400 8px IBM Plex Mono;color:#666a66;letter-spacing:.06em}.actions{display:flex;gap:9px}.actions button{padding:13px 16px;font:500 9px IBM Plex Mono;letter-spacing:.1em;cursor:pointer}.back{border:1px solid #33342f;background:transparent;color:#8e928e}.release{border:1px solid var(--bronze);background:var(--bronze);color:#080b10}
+.hunt{display:none;margin-top:18px;border:1px solid #344147;background:#091117;padding:16px}.hunt.show{display:block}.huntbar{height:3px;background:#17262d;overflow:hidden;margin:11px 0}.huntbar i{display:block;height:100%;width:0;background:var(--cyan);transition:width 2s}.hunt.show .huntbar i{width:100%}.hunt p{margin:0;font:400 9px IBM Plex Mono;color:#7e8f94;letter-spacing:.06em}
+@media(max-width:900px){.hero{display:block}.explain{margin-top:20px}.shell{grid-template-columns:1fr}.methods{grid-template-columns:1fr}.footer{align-items:flex-start;flex-direction:column}}
+</style></head>
+<body>
+<header><div class="brand"><div class="seal">M</div><div class="brandname">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></div></div><div class="step">HEAD BUILDER <b>/ 005</b></div></header>
+<main>
+<div class="hero"><div><div class="kicker">TEST RUN / THE FIRST HUNT</div><h1>RELEASE<br>THE HEAD.</h1></div><div class="explain">Your Head is defined and verified. Give Medusa a small group of organisations and see whether its commercial judgement matches yours. <b>This is a test — not a live campaign.</b></div></div>
+
+<div class="shell">
+<section class="panel">
+<div class="panelhead"><span>HEAD / HOTEL REFRIGERATION — SOUTH WEST / V1</span><span>READINESS <b>9 / 9 CLEAR</b></span></div>
+<div class="content">
+<h2 class="source-title">Choose the first hunting ground</h2>
+<div class="source-copy">For this first test, use a small known sample. Medusa will inspect the organisations, gather evidence and explain why each one does — or does not — match your Head.</div>
+<div class="methods">
+<div class="method active"><div class="num">01 / FASTEST</div><h3>Paste organisations</h3><p>Paste company names or domains. One per line. Medusa can resolve names to domains before the test.</p><button onclick="document.getElementById('domains').focus()">PASTE LIST ↓</button></div>
+<div class="method"><div class="num">02 / FILE</div><h3>Upload CSV</h3><p>Use an existing prospect list. Domain is ideal; company name and optional metadata can be included.</p><button onclick="document.getElementById('file').click()">CHOOSE CSV</button><input id="file" type="file" accept=".csv" hidden></div>
+</div>
+<textarea id="domains" aria-label="Test organisations" placeholder="thegrandhotel.co.uk&#10;examplehotel.com&#10;harbourhouse.co.uk&#10;..."></textarea>
+<div class="sample"><div><label>TEST SAMPLE SIZE</label><small>Medusa recommends 20–50 organisations. 25 is a useful first test.</small></div><div class="counter"><button onclick="change(-5)">−</button><span id="n">25</span><button onclick="change(5)">+</button></div></div>
+<div class="hunt" id="hunt"><p id="hunttext">AWAKENING HEAD / PREPARING TEST RUN...</p><div class="huntbar"><i></i></div><p>CAPTURE → OBSERVE → EVIDENCE → SIGNAL → QUALIFY</p></div>
+</div>
+</section>
+
+<aside class="side">
+<h2>Hotel Refrigeration</h2><div class="sub">SOUTH WEST / VERSION 1 / TEST MODE</div>
+<div class="orbit"><span class="eye e1"></span><span class="eye e2"></span><span class="eye e3"></span><span class="eye e4"></span><span class="eye e5"></span><div><strong id="sideN">25</strong><span>ORGANISATIONS</span></div></div>
+<div class="metric"><span>SIGNALS</span><b>6</b></div><div class="metric"><span>TRIGGERS</span><b>4</b></div><div class="metric"><span>EVIDENCE</span><b>BALANCED</b></div><div class="metric"><span>QUALIFICATION</span><b>SELECTIVE</b></div>
+<div class="note"><b>TEST PRINCIPLE</b>Medusa is testing the Head, not proving itself right. Strong, Possible and Rejected results are all useful if the reasoning is visible.</div>
+</aside>
+</div>
+
+<div class="footer"><div class="foot">SMALL TEST. VISIBLE REASONING. YOUR JUDGEMENT.</div><div class="actions"><button class="back">← VERIFY HEAD</button><button class="release" onclick="releaseHead()">RELEASE THE HEAD →</button></div></div>
+</main>
+<script>
+let size=25;function change(d){size=Math.max(20,Math.min(50,size+d));document.getElementById('n').textContent=size;document.getElementById('sideN').textContent=size}
+function releaseHead(){const h=document.getElementById('hunt');h.classList.add('show');setTimeout(()=>document.getElementById('hunttext').textContent='THE HUNT IS UNDERWAY / GATHERING EVIDENCE...',350);setTimeout(()=>{document.getElementById('hunttext').textContent='TEST COMPLETE / PROTOTYPE HANDOFF TO PAGE 06 — RESULTS';},2300)}
+</script>
+</body></html>

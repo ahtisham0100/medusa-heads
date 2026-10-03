@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Medusa Heads — Configure Your Head</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+:root{--night:#070b12;--panel:#0b1017;--ink:#f1eee7;--muted:#8d918d;--bronze:#b79a63;--bronze2:#6f5b39;--cyan:#79d7e8;--line:#2c2b26;--red:#b77d72;--green:#8fbf9d}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--night);color:var(--ink);font-family:Inter,sans-serif}
+body{background:radial-gradient(circle at 84% 28%,rgba(183,154,99,.07),transparent 27%),var(--night)}
+header{height:76px;border-bottom:1px solid #24241f;display:flex;align-items:center;justify-content:space-between;padding:0 4vw}
+.brand{display:flex;gap:13px;align-items:center}.seal{width:31px;height:31px;border:1px solid var(--bronze);border-radius:50%;display:grid;place-items:center;font:600 18px "Cormorant Garamond";color:var(--bronze)}
+.brandname{font:600 17px "Cormorant Garamond";letter-spacing:.16em}.brandname small{display:block;font:400 8px IBM Plex Mono;color:#77786f;letter-spacing:.22em;margin-top:5px}
+.step{font:400 9px IBM Plex Mono;color:#74766f;letter-spacing:.15em}.step b{color:var(--bronze);font-weight:400}
+main{max-width:1500px;margin:auto;padding:4vh 4vw 6vh}
+.hero{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:25px}
+.kicker{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.22em;margin-bottom:12px}
+h1{font:500 clamp(48px,5.5vw,82px)/.85 "Cormorant Garamond";letter-spacing:-.04em;margin:0;text-transform:uppercase}
+.explain{max-width:490px;color:#9da09b;font-size:14px;line-height:1.65}.explain b{color:#d9d2c5;font-weight:500}
+.layout{display:grid;grid-template-columns:235px 1fr 300px;border:1px solid #333129;background:rgba(10,15,22,.84);min-height:570px}
+nav{border-right:1px solid var(--line);padding:18px 0}.navtitle{padding:0 18px 13px;font:400 8px IBM Plex Mono;color:#666a66;letter-spacing:.16em}
+.navitem{padding:14px 18px;border-top:1px solid #1e211f;cursor:pointer;color:#8d918d;font:500 10px IBM Plex Mono;letter-spacing:.08em;display:flex;justify-content:space-between}
+.navitem:last-child{border-bottom:1px solid #1e211f}.navitem.active{color:#e6dbc4;background:rgba(183,154,99,.055);border-left:2px solid var(--bronze);padding-left:16px}.navitem.done span{color:var(--green)}
+.config{padding:24px 26px}.sectionhead{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:17px;margin-bottom:18px}
+.sectionhead h2{font:500 27px "Cormorant Garamond";margin:0}.sectionhead p{margin:5px 0 0;color:#7f837f;font-size:12px}.mode{font:400 8px IBM Plex Mono;color:#686c68;letter-spacing:.1em}.mode b{color:var(--cyan);font-weight:400}
+.criteria{display:grid;gap:9px}.row{display:grid;grid-template-columns:1fr 155px 110px;gap:10px;align-items:center;border:1px solid #292923;background:#0b1118;padding:13px 14px}
+.criterion b{display:block;font-size:13px;font-weight:500;color:#d7d4cc}.criterion small{display:block;margin-top:5px;font:400 9px IBM Plex Mono;color:#6e736f}
+.pills{display:flex;border:1px solid #30312c}.pill{flex:1;border:0;border-right:1px solid #30312c;background:transparent;color:#707570;padding:8px 5px;font:400 7px IBM Plex Mono;cursor:pointer}.pill:last-child{border-right:0}.pill.sel{background:rgba(183,154,99,.12);color:#d7c69f}.pill.exclude.sel{background:rgba(183,125,114,.12);color:#d5a49b}
+.detect{font:400 8px IBM Plex Mono;color:#777c78;text-align:right}.detect.high{color:var(--cyan)}.detect.medium{color:#b7a77e}.detect.low{color:#8a7771}
+.add{margin-top:12px;border:1px dashed #393831;background:transparent;color:#777c78;padding:11px 14px;width:100%;text-align:left;font:400 9px IBM Plex Mono;letter-spacing:.08em;cursor:pointer}.add:hover{border-color:var(--bronze2);color:#c2b28e}
+.side{border-left:1px solid var(--line);padding:20px}.artifact{border:1px solid #343128;min-height:265px;position:relative;padding:18px;background:radial-gradient(circle at 50% 45%,rgba(183,154,99,.07),transparent 43%)}
+.artifact h3{font:500 22px "Cormorant Garamond";margin:0 0 4px}.artifact .sub{font:400 8px IBM Plex Mono;color:#686d69;letter-spacing:.09em}
+.orbit{width:142px;height:142px;border:1px solid rgba(183,154,99,.23);border-radius:50%;margin:24px auto 17px;position:relative}.orbit:before{content:"";position:absolute;inset:23px;border:1px dashed rgba(183,154,99,.17);border-radius:50%}
+.eye{position:absolute;width:18px;height:9px;border:1px solid var(--cyan);border-radius:50%;box-shadow:0 0 11px rgba(121,215,232,.25)}.e1{left:62px;top:-5px}.e2{right:3px;top:39px}.e3{right:15px;bottom:18px}.e4{left:20px;bottom:9px}.e5{left:-5px;top:50px}
+.scoreline{display:flex;justify-content:space-between;border-top:1px solid #282923;padding:8px 0;font:400 8px IBM Plex Mono;color:#777b77}.scoreline b{color:#c5b78f;font-weight:400}
+.callout{margin-top:14px;border-left:1px solid var(--bronze2);padding:4px 0 4px 12px;font-size:11px;line-height:1.55;color:#858984}.callout b{display:block;color:#c3b58f;font:500 8px IBM Plex Mono;letter-spacing:.1em;margin-bottom:5px}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:20px}.footnote{font:400 8px IBM Plex Mono;color:#666a66;letter-spacing:.06em}.actions{display:flex;gap:9px}.actions button{padding:13px 16px;font:500 9px IBM Plex Mono;letter-spacing:.1em;cursor:pointer}.back{border:1px solid #33342f;background:transparent;color:#8e928e}.next{border:1px solid var(--bronze);background:var(--bronze);color:#080b10}
+@media(max-width:1050px){.layout{grid-template-columns:190px 1fr}.side{display:none}}@media(max-width:760px){.hero{display:block}.explain{margin-top:20px}.layout{display:block}nav{border-right:0}.row{grid-template-columns:1fr}.detect{text-align:left}.footer{align-items:flex-start;flex-direction:column}}
+</style></head>
+<body>
+<header><div class="brand"><div class="seal">M</div><div class="brandname">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></div></div><div class="step">HEAD BUILDER <b>/ 003</b></div></header>
+<main>
+<div class="hero"><div><div class="kicker">CONFIGURATION / SHAPE THE HUNT</div><h1>TEACH MEDUSA<br>WHAT MATTERS.</h1></div><div class="explain">Medusa has interpreted your intent. Now decide which characteristics are merely useful and which genuinely define an opportunity. <b>You set the commercial judgement; Medusa handles the detection.</b></div></div>
+
+<div class="layout">
+<nav>
+<div class="navtitle">HOTEL REFRIGERATION / V1</div>
+<div class="navitem done"><span>✓</span> TARGET</div>
+<div class="navitem active">02 &nbsp; SIGNALS <span>5</span></div>
+<div class="navitem">03 &nbsp; EXCLUSIONS <span>3</span></div>
+<div class="navitem">04 &nbsp; TRIGGERS <span>4</span></div>
+<div class="navitem">05 &nbsp; EVIDENCE <span>—</span></div>
+<div class="navitem">06 &nbsp; QUALIFICATION <span>—</span></div>
+</nav>
+
+<section class="config">
+<div class="sectionhead"><div><h2>Opportunity Signals</h2><p>How important is each characteristic when deciding whether a hotel is worth approaching?</p></div><div class="mode">MEDUSA SUGGESTION <b>ON</b></div></div>
+
+<div class="criteria">
+<div class="row"><div class="criterion"><b>80+ rooms</b><small>SIZE / PUBLICLY DETECTABLE</small></div><div class="pills"><button class="pill">USEFUL</button><button class="pill sel">IMPORTANT</button><button class="pill">CRITICAL</button></div><div class="detect high">VISIBILITY / HIGH</div></div>
+<div class="row"><div class="criterion"><b>On-site restaurant</b><small>FOOD SERVICE / PUBLICLY DETECTABLE</small></div><div class="pills"><button class="pill">USEFUL</button><button class="pill sel">IMPORTANT</button><button class="pill">CRITICAL</button></div><div class="detect high">VISIBILITY / HIGH</div></div>
+<div class="row"><div class="criterion"><b>Weddings &amp; events</b><small>EVENT OPERATIONS / PUBLICLY DETECTABLE</small></div><div class="pills"><button class="pill">USEFUL</button><button class="pill sel">IMPORTANT</button><button class="pill">CRITICAL</button></div><div class="detect high">VISIBILITY / HIGH</div></div>
+<div class="row"><div class="criterion"><b>Banqueting facilities</b><small>FOOD SERVICE / SOMETIMES DETECTABLE</small></div><div class="pills"><button class="pill sel">USEFUL</button><button class="pill">IMPORTANT</button><button class="pill">CRITICAL</button></div><div class="detect medium">VISIBILITY / MEDIUM</div></div>
+<div class="row"><div class="criterion"><b>Conference facilities</b><small>EVENT OPERATIONS / PUBLICLY DETECTABLE</small></div><div class="pills"><button class="pill sel">USEFUL</button><button class="pill">IMPORTANT</button><button class="pill">CRITICAL</button></div><div class="detect high">VISIBILITY / HIGH</div></div>
+<div class="row"><div class="criterion"><b>Existing refrigeration contract</b><small>COMMERCIAL / VALUABLE BUT HARD TO OBSERVE</small></div><div class="pills"><button class="pill sel">USEFUL</button><button class="pill">IMPORTANT</button><button class="pill">CRITICAL</button></div><div class="detect low">VISIBILITY / LOW</div></div>
+</div>
+<button class="add">+ ADD SOMETHING ELSE MEDUSA SHOULD LOOK FOR</button>
+</section>
+
+<aside class="side">
+<div class="artifact"><h3>Your Head</h3><div class="sub">HOTEL REFRIGERATION — SOUTH WEST</div><div class="orbit"><span class="eye e1"></span><span class="eye e2"></span><span class="eye e3"></span><span class="eye e4"></span><span class="eye e5"></span></div>
+<div class="scoreline"><span>TARGET</span><b>DEFINED</b></div><div class="scoreline"><span>SIGNALS</span><b>6</b></div><div class="scoreline"><span>EXCLUSIONS</span><b>3</b></div><div class="scoreline"><span>TRIGGERS</span><b>4</b></div></div>
+<div class="callout"><b>MEDUSA NOTES</b>“Existing refrigeration contract” could be commercially valuable, but may not be visible from public website evidence. Keep it if useful — Medusa will not treat an unknown as a failure.</div>
+</aside>
+</div>
+
+<div class="footer"><div class="footnote">YOUR HEAD IS A COMMERCIAL DEFINITION — NOT A DATABASE FILTER.</div><div class="actions"><button class="back">← INTERPRETATION</button><button class="next" onclick="alert('Next configuration: Exclusions')">SAVE SIGNALS &amp; CONTINUE →</button></div></div>
+</main>
+<script>
+document.querySelectorAll('.pills').forEach(group=>group.querySelectorAll('.pill').forEach(btn=>btn.onclick=()=>{group.querySelectorAll('.pill').forEach(x=>x.classList.remove('sel'));btn.classList.add('sel')}));
+</script>
+</body></html>

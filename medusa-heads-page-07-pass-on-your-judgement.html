@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Medusa Heads — Teach Your Head</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+:root{--night:#070b12;--ink:#f1eee7;--bronze:#b79a63;--bronze2:#6f5b39;--cyan:#79d7e8;--line:#2c2b26;--green:#8fbf9d;--amber:#c3a56b;--red:#bd8075}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--night);color:var(--ink);font-family:Inter,sans-serif}
+body{background:radial-gradient(circle at 84% 24%,rgba(183,154,99,.075),transparent 29%),var(--night)}
+header{height:76px;border-bottom:1px solid #24241f;display:flex;align-items:center;justify-content:space-between;padding:0 4vw}
+.brand{display:flex;gap:13px;align-items:center}.seal{width:31px;height:31px;border:1px solid var(--bronze);border-radius:50%;display:grid;place-items:center;font:600 18px "Cormorant Garamond";color:var(--bronze)}
+.brandname{font:600 17px "Cormorant Garamond";letter-spacing:.16em}.brandname small{display:block;font:400 8px IBM Plex Mono;color:#77786f;letter-spacing:.22em;margin-top:5px}
+.step{font:400 9px IBM Plex Mono;color:#74766f;letter-spacing:.15em}.step b{color:var(--bronze);font-weight:400}
+main{max-width:1460px;margin:auto;padding:4.3vh 4.5vw 6vh}.hero{display:flex;justify-content:space-between;align-items:end;gap:50px;margin-bottom:25px}
+.kicker{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.22em;margin-bottom:12px}
+h1{font:500 clamp(52px,5.8vw,88px)/.84 "Cormorant Garamond";letter-spacing:-.04em;margin:0;text-transform:uppercase}
+.explain{max-width:520px;color:#9da09b;font-size:14px;line-height:1.7}.explain b{color:#d8d2c5;font-weight:500}
+.progress{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #343129;background:#0a0f16;margin-bottom:16px}
+.p{padding:14px 17px;border-right:1px solid var(--line)}.p:last-child{border:0}.p small{font:400 8px IBM Plex Mono;color:#686d69;letter-spacing:.1em}.p strong{display:block;font:500 24px "Cormorant Garamond";margin-top:3px}.p strong.good{color:var(--green)}.p strong.wait{color:var(--amber)}
+.shell{display:grid;grid-template-columns:1fr 340px;gap:18px}.panel,.side{border:1px solid #343129;background:rgba(10,15,22,.86)}
+.panelhead{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font:400 9px IBM Plex Mono;color:#777b76;letter-spacing:.1em}
+.cards{padding:12px 18px}.card{display:grid;grid-template-columns:62px 1fr 300px;gap:15px;align-items:center;padding:15px 0;border-bottom:1px solid #252721}.card:last-child{border-bottom:0}
+.score{width:48px;height:48px;border:1px solid #456052;border-radius:50%;display:grid;place-items:center;font:500 19px "Cormorant Garamond";color:#b9d0bd}.score.possible{border-color:#65583b;color:var(--amber)}
+.company b{display:block;font-size:13px;font-weight:500;color:#d7d5ce}.company small{display:block;margin-top:5px;font:400 8px IBM Plex Mono;color:#6d726e}.why{font-size:10px;color:#7e837f;margin-top:6px}
+.judge{display:flex;gap:6px;justify-content:flex-end}.judge button{border:1px solid #34362f;background:transparent;color:#858a85;padding:9px 10px;font:400 8px IBM Plex Mono;cursor:pointer}.judge button:hover,.judge button.sel{border-color:var(--bronze);color:#d9c89f;background:rgba(183,154,99,.05)}
+.side{padding:20px;height:max-content}.side h2{font:500 27px "Cormorant Garamond";margin:0}.sub{font:400 8px IBM Plex Mono;color:#686d69;letter-spacing:.1em;margin-top:4px}
+.learning{margin:22px 0;border:1px solid #302f29;padding:15px}.learning small{font:400 8px IBM Plex Mono;color:var(--cyan);letter-spacing:.1em}.learning h3{font:500 20px "Cormorant Garamond";margin:7px 0 9px}.learning p{font-size:11px;line-height:1.6;color:#858984;margin:0}
+.suggestion{border-top:1px solid #282923;padding:13px 0}.suggestion b{display:block;font-size:11px;font-weight:500;color:#cbc7bd}.suggestion p{font-size:10px;color:#7d817d;line-height:1.5;margin:5px 0 8px}.suggestion button{border:1px solid #393831;background:transparent;color:#a8a49a;padding:7px 9px;font:400 7px IBM Plex Mono;cursor:pointer}.suggestion button.accepted{border-color:#456052;color:var(--green)}
+.principle{margin-top:12px;border-left:1px solid var(--bronze2);padding-left:11px;color:#818581;font-size:11px;line-height:1.55}.principle b{display:block;color:#c3b58f;font:500 8px IBM Plex Mono;letter-spacing:.1em;margin-bottom:5px}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:20px}.foot{font:400 8px IBM Plex Mono;color:#666a66;letter-spacing:.06em}.actions{display:flex;gap:9px}.actions button{padding:13px 16px;font:500 9px IBM Plex Mono;letter-spacing:.1em;cursor:pointer}.back{border:1px solid #33342f;background:transparent;color:#8e928e}.continue{border:1px solid var(--bronze);background:var(--bronze);color:#080b10}
+@media(max-width:950px){.hero{display:block}.explain{margin-top:20px}.shell{grid-template-columns:1fr}.card{grid-template-columns:55px 1fr}.judge{grid-column:2;justify-content:flex-start}.footer{align-items:flex-start;flex-direction:column}}
+</style></head>
+<body>
+<header><div class="brand"><div class="seal">M</div><div class="brandname">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></div></div><div class="step">HEAD BUILDER <b>/ 007</b></div></header>
+<main>
+<div class="hero"><div><div class="kicker">REFINEMENT / THE TEACHING</div><h1>PASS ON YOUR<br>JUDGEMENT.</h1></div><div class="explain">Medusa can gather evidence. It can apply the Head. But <b>you know what a genuinely valuable opportunity feels like.</b> Tell it where its judgement matched yours — and where it didn't.</div></div>
+
+<div class="progress">
+<div class="p"><small>RESULTS REVIEWED</small><strong id="reviewed">0 / 5</strong></div>
+<div class="p"><small>AGREEMENT</small><strong class="good" id="agreement">—</strong></div>
+<div class="p"><small>HEAD STATUS</small><strong class="wait" id="status">LEARNING</strong></div>
+</div>
+
+<div class="shell">
+<section class="panel">
+<div class="panelhead"><span>YOUR JUDGEMENT / SAMPLE RESULTS</span><span>GOOD · BAD · UNSURE</span></div>
+<div class="cards">
+<div class="card"><div class="score">83</div><div class="company"><b>The Grand Harbour Hotel</b><small>STRONG OPPORTUNITY</small><div class="why">126 rooms · restaurant · weddings · events</div></div><div class="judge"><button onclick="judge(this,'good')">GOOD MATCH</button><button onclick="judge(this,'bad')">BAD MATCH</button><button onclick="judge(this,'unsure')">UNSURE</button></div></div>
+<div class="card"><div class="score">79</div><div class="company"><b>Riverside House Hotel</b><small>STRONG OPPORTUNITY</small><div class="why">94 rooms · dining · events</div></div><div class="judge"><button onclick="judge(this,'good')">GOOD MATCH</button><button onclick="judge(this,'bad')">BAD MATCH</button><button onclick="judge(this,'unsure')">UNSURE</button></div></div>
+<div class="card"><div class="score">76</div><div class="company"><b>West Country Manor</b><small>STRONG OPPORTUNITY</small><div class="why">88 rooms · restaurant · weddings · refurbishment</div></div><div class="judge"><button onclick="judge(this,'good')">GOOD MATCH</button><button onclick="judge(this,'bad')">BAD MATCH</button><button onclick="judge(this,'unsure')">UNSURE</button></div></div>
+<div class="card"><div class="score possible">58</div><div class="company"><b>Coastal View Hotel</b><small>POSSIBLE OPPORTUNITY</small><div class="why">83 rooms · restaurant · events unknown</div></div><div class="judge"><button onclick="judge(this,'good')">GOOD MATCH</button><button onclick="judge(this,'bad')">BAD MATCH</button><button onclick="judge(this,'unsure')">UNSURE</button></div></div>
+<div class="card"><div class="score possible">51</div><div class="company"><b>Old Mill Country Hotel</b><small>POSSIBLE OPPORTUNITY</small><div class="why">dining · weddings · room count unknown</div></div><div class="judge"><button onclick="judge(this,'good')">GOOD MATCH</button><button onclick="judge(this,'bad')">BAD MATCH</button><button onclick="judge(this,'unsure')">UNSURE</button></div></div>
+</div>
+</section>
+
+<aside class="side">
+<h2>What Medusa is learning</h2><div class="sub">SUGGESTIONS — NEVER SILENT CHANGES</div>
+<div class="learning"><small>HEAD / VERSION 1</small><h3>Your judgement remains the authority.</h3><p>Feedback can suggest how the next version should change. Medusa will not alter an approved Head without showing you what changed and asking you to approve it.</p></div>
+<div class="suggestion"><b>Room count may matter more</b><p>If lower-room-count hotels repeatedly feel weak, Medusa can increase the importance of the 80+ room signal.</p><button onclick="accept(this)">ACCEPT SUGGESTION</button></div>
+<div class="suggestion"><b>Refurbishment looks promising</b><p>If you favour businesses showing recent investment, move refurbishment from a trigger to a stronger qualification signal.</p><button onclick="accept(this)">ACCEPT SUGGESTION</button></div>
+<div class="principle"><b>THE TEACHING</b>Medusa learns from your judgement, but it does not rewrite your commercial knowledge behind your back.</div>
+</aside>
+</div>
+
+<div class="footer"><div class="foot">THE MACHINE GATHERS EVIDENCE. THE HUMAN DEFINES VALUE.</div><div class="actions"><button class="back">← HUNT RESULTS</button><button class="continue" onclick="alert('Prototype handoff: Page 08 — Your Head Is Ready')">PREPARE MY HEAD →</button></div></div>
+</main>
+<script>
+let choices=new Map();
+function judge(btn,val){
+ const card=btn.closest('.card'), buttons=card.querySelectorAll('.judge button');
+ buttons.forEach(x=>x.classList.remove('sel'));btn.classList.add('sel');choices.set(card,val);update();
+}
+function update(){
+ const n=choices.size;document.getElementById('reviewed').textContent=n+' / 5';
+ if(n){const good=[...choices.values()].filter(x=>x==='good').length;document.getElementById('agreement').textContent=Math.round(good/n*100)+'%';}
+ if(n===5){document.getElementById('status').textContent='TAUGHT';document.getElementById('status').className='good'}
+}
+function accept(btn){btn.textContent='ACCEPTED ✓';btn.classList.add('accepted')}
+</script>
+</body></html>

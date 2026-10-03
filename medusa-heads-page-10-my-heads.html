@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Medusa Heads — My Heads</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+:root{--night:#070b12;--ink:#f1eee7;--bronze:#b79a63;--bronze2:#6f5b39;--cyan:#79d7e8;--line:#2c2b26;--green:#8fbf9d;--amber:#c3a56b;--red:#bd8075}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--night);color:var(--ink);font-family:Inter,sans-serif}
+body{background:radial-gradient(circle at 84% 18%,rgba(183,154,99,.065),transparent 27%),var(--night)}
+header{height:76px;border-bottom:1px solid #24241f;display:flex;align-items:center;justify-content:space-between;padding:0 4vw}
+.brand{display:flex;gap:13px;align-items:center}.seal{width:31px;height:31px;border:1px solid var(--bronze);border-radius:50%;display:grid;place-items:center;font:600 18px "Cormorant Garamond";color:var(--bronze)}
+.brandname{font:600 17px "Cormorant Garamond";letter-spacing:.16em}.brandname small{display:block;font:400 8px IBM Plex Mono;color:#77786f;letter-spacing:.22em;margin-top:5px}
+.user{font:400 8px IBM Plex Mono;color:#777b76;letter-spacing:.1em}.user b{color:var(--green);font-weight:400}
+main{max-width:1500px;margin:auto;padding:4vh 4.5vw 6vh}.top{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:25px}
+.kicker{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.22em;margin-bottom:11px}
+h1{font:500 clamp(52px,5.5vw,84px)/.84 "Cormorant Garamond";letter-spacing:-.04em;margin:0;text-transform:uppercase}
+.intro{max-width:500px;color:#919590;font-size:13px;line-height:1.65}.new{border:1px solid var(--bronze);background:var(--bronze);color:#080b10;padding:13px 16px;font:500 9px IBM Plex Mono;letter-spacing:.1em;cursor:pointer}
+.overview{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid #343129;background:#0a0f16;margin-bottom:16px}
+.stat{padding:14px 16px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat small{display:block;font:400 7px IBM Plex Mono;color:#676c68;letter-spacing:.1em}.stat strong{display:block;font:500 24px "Cormorant Garamond";margin-top:3px}.stat strong.good{color:var(--green)}.stat strong.cyan{color:var(--cyan)}
+.toolbar{display:flex;justify-content:space-between;align-items:center;border:1px solid #343129;border-bottom:0;background:#090e14;padding:10px 13px}.filters{display:flex;gap:4px}.filter{border:1px solid transparent;background:transparent;color:#747975;padding:7px 9px;font:400 8px IBM Plex Mono;cursor:pointer}.filter.active{border-color:#3b3932;color:#d3c6aa}.search{background:#080d13;border:1px solid #2e302b;color:#bbbdb7;padding:8px 10px;font:400 8px IBM Plex Mono;width:210px;outline:0}
+.heads{border:1px solid #343129;background:rgba(10,15,22,.86)}.head{display:grid;grid-template-columns:48px 1.5fr 100px 120px 110px 180px;gap:15px;align-items:center;padding:17px;border-bottom:1px solid #252721}.head:last-child{border-bottom:0}
+.icon{width:35px;height:35px;border:1px solid #3b3c35;border-radius:50%;display:grid;place-items:center;font:500 17px "Cormorant Garamond";color:#b9aa88}.name b{display:block;font-size:13px;font-weight:500;color:#d8d5ce}.name small{display:block;margin-top:5px;font:400 8px IBM Plex Mono;color:#686e69}.status{font:500 8px IBM Plex Mono;letter-spacing:.08em}.active{color:var(--green)}.testing{color:var(--cyan)}.draft{color:var(--amber)}.paused{color:#817f79}
+.metric small{display:block;font:400 7px IBM Plex Mono;color:#626762;letter-spacing:.08em}.metric b{display:block;margin-top:4px;font:500 16px "Cormorant Garamond";color:#cfc9bd}
+.actions{display:flex;justify-content:flex-end;gap:5px}.actions button{border:1px solid #35362f;background:transparent;color:#8f938e;padding:8px 9px;font:400 7px IBM Plex Mono;cursor:pointer}.actions button:hover{border-color:var(--bronze);color:#d8c69e}.actions .run{border-color:#4a4436;color:#c0ad83}
+.empty-note{margin-top:15px;border-left:1px solid var(--bronze2);padding:3px 0 3px 12px;font-size:11px;color:#7f837f;line-height:1.55}.empty-note b{color:#c2b38e;font:500 8px IBM Plex Mono;letter-spacing:.1em;display:block;margin-bottom:5px}
+.footer{display:flex;justify-content:space-between;margin-top:20px;font:400 8px IBM Plex Mono;color:#626762;letter-spacing:.07em}.footer b{color:#a99a7a;font-weight:400}
+@media(max-width:1050px){.overview{grid-template-columns:repeat(2,1fr)}.stat{border-bottom:1px solid var(--line)}.head{grid-template-columns:45px 1fr 90px}.head .metric{display:none}.actions{grid-column:2/4;justify-content:flex-start}}@media(max-width:700px){.top{display:block}.intro{margin:18px 0}.toolbar{align-items:flex-start;gap:10px;flex-direction:column}.filters{flex-wrap:wrap}.search{width:100%}.overview{grid-template-columns:1fr 1fr}.head{grid-template-columns:40px 1fr}.status{grid-column:2}.actions{grid-column:2}.footer{gap:12px;flex-direction:column}}
+</style></head>
+<body>
+<header><div class="brand"><div class="seal">M</div><div class="brandname">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></div></div><div class="user">WORKSPACE / <b>ACTIVE</b></div></header>
+<main>
+<div class="top"><div><div class="kicker">YOUR MEDUSA / THE PANTHEON</div><h1>MY HEADS.</h1></div><div><p class="intro">Each Head carries a different piece of your commercial judgement. Run them, refine them, pause them or create another when you want Medusa to seek something new.</p><button class="new" onclick="alert('Prototype handoff: Page 01 — Design Your Head')">+ AWAKEN A NEW HEAD</button></div></div>
+
+<div class="overview">
+<div class="stat"><small>TOTAL HEADS</small><strong>4</strong></div>
+<div class="stat"><small>ACTIVE</small><strong class="good">1</strong></div>
+<div class="stat"><small>ORGANISATIONS ANALYSED</small><strong>1,248</strong></div>
+<div class="stat"><small>OPPORTUNITIES FOUND</small><strong class="cyan">186</strong></div>
+<div class="stat"><small>CURRENT HUNT</small><strong>SEEK</strong></div>
+</div>
+
+<div class="toolbar"><div class="filters"><button class="filter active" onclick="filterHeads('all',this)">ALL / 4</button><button class="filter" onclick="filterHeads('active',this)">ACTIVE / 1</button><button class="filter" onclick="filterHeads('testing',this)">TESTING / 1</button><button class="filter" onclick="filterHeads('draft',this)">DRAFT / 1</button><button class="filter" onclick="filterHeads('paused',this)">PAUSED / 1</button></div><input class="search" id="search" placeholder="SEARCH HEADS..." oninput="searchHeads()"></div>
+
+<section class="heads">
+<div class="head item active-head" data-state="active"><div class="icon">M</div><div class="name"><b>Hotel Refrigeration — South West</b><small>HEAD 001 / V1 · SEEK · LAST RUN 03 OCT 2026</small></div><div class="status active">● ACTIVE</div><div class="metric"><small>ANALYSED</small><b>625</b></div><div class="metric"><small>OPPORTUNITIES</small><b>92</b></div><div class="actions"><button class="run">RUN HEAD</button><button>RESULTS</button><button>•••</button></div></div>
+<div class="head item" data-state="testing"><div class="icon">M</div><div class="name"><b>Distributor Recruitment — UK</b><small>HEAD 002 / DRAFT V2 · TEST RUN</small></div><div class="status testing">◌ TESTING</div><div class="metric"><small>ANALYSED</small><b>50</b></div><div class="metric"><small>OPPORTUNITIES</small><b>11</b></div><div class="actions"><button class="run">CONTINUE TEST</button><button>RESULTS</button><button>•••</button></div></div>
+<div class="head item" data-state="draft"><div class="icon">M</div><div class="name"><b>Competitor Replacement</b><small>HEAD 003 / DRAFT V1 · CONFIGURATION INCOMPLETE</small></div><div class="status draft">◇ DRAFT</div><div class="metric"><small>ANALYSED</small><b>—</b></div><div class="metric"><small>OPPORTUNITIES</small><b>—</b></div><div class="actions"><button class="run">CONTINUE</button><button>DUPLICATE</button><button>•••</button></div></div>
+<div class="head item" data-state="paused"><div class="icon">M</div><div class="name"><b>Hospitality Expansion Signals</b><small>HEAD 004 / V1 · PAUSED 26 SEP 2026</small></div><div class="status paused">Ⅱ PAUSED</div><div class="metric"><small>ANALYSED</small><b>573</b></div><div class="metric"><small>OPPORTUNITIES</small><b>83</b></div><div class="actions"><button class="run">RESUME</button><button>RESULTS</button><button>•••</button></div></div>
+</section>
+
+<div class="empty-note"><b>THE PANTHEON</b>Your Heads are separate commercial lenses. Each can evolve through new versions without changing the evidence or decisions attached to its earlier hunts.</div>
+<div class="footer"><span>MEDUSA HEADS / COMMERCIAL OPPORTUNITY INTELLIGENCE</span><span><b>MANY EYES · ONE PURPOSE</b></span></div>
+</main>
+<script>
+let state='all';
+function filterHeads(s,btn){state=s;document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');apply()}
+function searchHeads(){apply()}
+function apply(){const q=document.getElementById('search').value.toLowerCase();document.querySelectorAll('.item').forEach(x=>{const stateOk=state==='all'||x.dataset.state===state;const searchOk=x.textContent.toLowerCase().includes(q);x.style.display=stateOk&&searchOk?'grid':'none'})}
+</script>
+</body></html>
