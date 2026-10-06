@@ -8,10 +8,10 @@
 :root{--night:#070b12;--panel:#0c1118;--ink:#f1eee7;--muted:#93958f;--bronze:#b79a63;--bronze2:#6f5b39;--cyan:#79d7e8;--line:#2a2924;--green:#8fbf9d}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--night);color:var(--ink);font-family:Inter,sans-serif}
 body{background:radial-gradient(circle at 76% 42%,rgba(183,154,99,.08),transparent 30%),var(--night)}
-header{height:78px;border-bottom:1px solid #24241f;display:flex;align-items:center;justify-content:space-between;padding:0 4.5vw}
-.brand{display:flex;gap:13px;align-items:center}.seal{width:31px;height:31px;border:1px solid var(--bronze);border-radius:50%;display:grid;place-items:center;font:600 18px "Cormorant Garamond";color:var(--bronze)}
-.brandname{font:600 17px "Cormorant Garamond";letter-spacing:.16em}.brandname small{display:block;font:400 8px IBM Plex Mono;color:#77786f;letter-spacing:.22em;margin-top:5px}
-.step{font:400 9px IBM Plex Mono;color:#74766f;letter-spacing:.15em}.step b{color:var(--bronze);font-weight:400}
+
+
+
+
 main{max-width:1440px;margin:auto;padding:5vh 5vw 7vh}
 .top{display:grid;grid-template-columns:1fr .8fr;gap:7vw;align-items:end;margin-bottom:34px}
 .kicker{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.22em;margin-bottom:18px}
@@ -39,11 +39,22 @@ h1{font:500 clamp(54px,6vw,92px)/.83 "Cormorant Garamond";letter-spacing:-.04em;
 .oracle{position:fixed;right:22px;bottom:20px;font:500 9px "Cormorant Garamond";letter-spacing:.15em;color:#4e4b43}
 @media(max-width:850px){.top{grid-template-columns:1fr;gap:22px}.grid{grid-template-columns:1fr}.card{border-right:0}.bottom{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions button{flex:1}}
 </style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<header>
-<div class="brand"><div class="seal">M</div><div class="brandname">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></div></div>
-<div class="step">HEAD BUILDER <b>/ 002</b></div>
+<header class="site-nav">
+<div class="sn-inner">
+<a class="sn-brand" href="index.html" aria-label="Medusa Heads home"><img class="sn-logo" src="assets/logo.svg" alt=""><span class="sn-name">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></span></a>
+<nav class="sn-links" id="sn-links" aria-label="Site">
+<a href="index.html">BUILD A HEAD</a>
+<div class="sn-drop"><button class="sn-dropbtn" type="button" aria-expanded="false" aria-controls="sn-flow">THE FLOW <span class="sn-caret">▾</span></button>
+<div class="sn-menu" id="sn-flow"><a href="index.html"><b>01</b> What are you seeking?</a><a href="medusa-heads-page-02-medusa-understands-v2.html" aria-current="page"><b>02</b> Medusa understands</a><a href="medusa-heads-page-03-configure-your-head.html"><b>03</b> Configure your Head</a><a href="medusa-heads-page-04-can-medusa-see-it.html"><b>04</b> Can Medusa see it?</a><a href="medusa-heads-page-05-release-the-head.html"><b>05</b> Release the Head</a><a href="medusa-heads-page-06-hunt-results-v2.html"><b>06</b> Hunt results</a><a href="medusa-heads-page-07-pass-on-your-judgement.html"><b>07</b> Pass on your judgement</a><a href="medusa-heads-page-08-the-head-is-ready.html"><b>08</b> The Head is ready</a><a href="medusa-heads-page-09-choose-your-hunt.html"><b>09</b> Choose your hunt</a><a href="medusa-heads-page-10-my-heads.html"><b>10</b> My Heads</a></div></div>
+<a href="medusa-heads-page-10-my-heads.html">MY HEADS</a>
+<a href="pricing.html">PRICING</a>
+<a class="sn-mobile-cta" href="index.html">BUILD A HEAD →</a>
+</nav>
+<div class="sn-right"><span class="sn-step">HEAD BUILDER <b>/ 002</b></span><a class="sn-cta" href="index.html">BUILD A HEAD →</a><button class="sn-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sn-links"><span></span><span></span><span></span></button></div>
+</div>
 </header>
 <main>
 <section class="top">
@@ -71,8 +82,20 @@ h1{font:500 clamp(54px,6vw,92px)/.83 "Cormorant Garamond";letter-spacing:-.04em;
 
 <div class="bottom">
 <div class="legend"><b>CYAN</b> = signals Medusa believes it can look for in public evidence &nbsp;·&nbsp; YOU REMAIN IN CONTROL</div>
-<div class="actions"><button class="secondary" onclick="history.back()">← BACK</button><button class="primary" onclick="alert('Prototype handoff: Page 03 — Configure Your Head')">YES — CONFIGURE THIS HEAD →</button></div>
+<div class="actions"><button class="secondary" onclick="location.href='index.html'">← BACK</button><button class="primary" onclick="location.href='medusa-heads-page-03-configure-your-head.html'">YES — CONFIGURE THIS HEAD →</button></div>
 </div>
 </main>
+<footer class="site-footer">
+<div class="sf-inner">
+<div class="sf-brand"><img class="sf-logo" src="assets/logo.svg" alt=""><div class="sf-name">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></div>
+<p class="sf-tag"><b>Multi-Eyed Digital Understanding Scanner for Acquisition.</b> Describe the opportunity you want. Medusa interprets it, you verify the Head, and nothing runs until you approve it.</p>
+<div class="sf-rule">MEDUSA INTERPRETS. YOU VERIFY.</div></div>
+<div class="sf-col"><h4>PRODUCT</h4><a href="index.html">Build a Head</a><a href="medusa-heads-page-10-my-heads.html">My Heads</a><a href="pricing.html">Pricing</a><a href="pricing.html#cerberus-box">Cerberus verification</a></div>
+<div class="sf-col"><h4>THE FLOW</h4><div class="sf-flow"><a href="index.html"><b>01</b><span>What are you seeking?</span></a><a href="medusa-heads-page-02-medusa-understands-v2.html" aria-current="page"><b>02</b><span>Medusa understands</span></a><a href="medusa-heads-page-03-configure-your-head.html"><b>03</b><span>Configure your Head</span></a><a href="medusa-heads-page-04-can-medusa-see-it.html"><b>04</b><span>Can Medusa see it?</span></a><a href="medusa-heads-page-05-release-the-head.html"><b>05</b><span>Release the Head</span></a><a href="medusa-heads-page-06-hunt-results-v2.html"><b>06</b><span>Hunt results</span></a><a href="medusa-heads-page-07-pass-on-your-judgement.html"><b>07</b><span>Pass on your judgement</span></a><a href="medusa-heads-page-08-the-head-is-ready.html"><b>08</b><span>The Head is ready</span></a><a href="medusa-heads-page-09-choose-your-hunt.html"><b>09</b><span>Choose your hunt</span></a><a href="medusa-heads-page-10-my-heads.html"><b>10</b><span>My Heads</span></a></div></div>
+<div class="sf-col"><h4>COMPANY</h4><a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+</div>
+<div class="sf-bottom"><div><span>© 2026 MEDUSA HEADS · ALL PRICES EXCLUDE VAT WHERE APPLICABLE</span><span><b>MANY EYES · ONE PURPOSE</b></span></div></div>
+</footer>
 <div class="oracle">MANY EYES · ONE PURPOSE</div>
+<script src="assets/site.js" defer></script>
 </body></html>
