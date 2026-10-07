@@ -7,11 +7,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
 :root{--night:#070b12;--deep:#0b111b;--ink:#f1eee7;--muted:#8f938f;--bronze:#b79a63;--bronze2:#6f5b39;--cyan:#79d7e8;--line:#292a28}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 20%,rgba(183,154,99,.08),transparent 28%),var(--night);color:var(--ink);font-family:Inter,sans-serif}
-
-
-
 main{max-width:1460px;margin:auto;padding:0 5vw 80px}
-.hero{padding-top:20px;display:grid;grid-template-columns:1.1fr .9fr;gap:5vw;align-items:center;min-height:580px;border-bottom:1px solid #24241f}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:5vw;align-items:center;min-height:580px;border-bottom:1px solid #24241f}
 .k{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.22em;margin-bottom:20px}
 h1,h2{font-family:"Cormorant Garamond",serif;font-weight:500;text-transform:uppercase;letter-spacing:-.035em}
 h1{font-size:clamp(64px,7vw,110px);line-height:.78;margin:0 0 28px}h2{font-size:clamp(42px,5vw,72px);line-height:.9;margin:0}
@@ -22,11 +19,11 @@ h1{font-size:clamp(64px,7vw,110px);line-height:.78;margin:0 0 28px}h2{font-size:
 .card{border:1px solid var(--line);background:linear-gradient(145deg,#0d131c,#080c12);padding:26px;display:flex;flex-direction:column;min-height:405px;position:relative}.card.featured{border-color:var(--bronze2)}.tag{font:500 8px IBM Plex Mono;color:#6f726c;letter-spacing:.16em}.card h3{font:600 35px "Cormorant Garamond";letter-spacing:.04em;margin:18px 0 6px}.strap{color:#a4a69f;font-size:13px;min-height:38px}.price{margin:25px 0 7px}.price b{font:500 44px "Cormorant Garamond"}.price span{font:400 9px IBM Plex Mono;color:#777a75}.gold{font:400 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.08em;margin-bottom:17px}ul{list-style:none;padding:0;margin:0 0 22px}li{padding:9px 0;border-top:1px solid #252722;color:#969993;font-size:13px;line-height:1.5}li:before{content:"—";color:var(--bronze2);margin-right:8px}
 .sel{margin-top:auto;border:1px solid var(--bronze);background:transparent;color:#e4d3ae;padding:13px;font:500 9px IBM Plex Mono;letter-spacing:.13em;cursor:pointer}.sel.active,.sel:hover{background:var(--bronze);color:#080b10}
 .cerb{margin-top:14px;border:1px solid #34312a;background:linear-gradient(90deg,rgba(183,154,99,.06),#0a1019);padding:22px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center}.cmark{width:52px;height:52px;border:1px solid var(--bronze2);display:grid;place-items:center;font:600 25px "Cormorant Garamond";color:var(--bronze)}.cerb h3{margin:0 0 5px;font:600 22px "Cormorant Garamond"}.cerb p{margin:0;color:#8f938f;font-size:13px;line-height:1.55}.cerb small{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.1em;text-align:right}
-.purses{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.purse{border:1px solid var(--line);background:var(--deep);padding:18px 14px;min-height:190px;display:flex;flex-direction:column;cursor:pointer}.purse.active,.purse:hover{border-color:var(--bronze)}.pn{font:500 8px IBM Plex Mono;color:#777a75;letter-spacing:.15em}.coins{font:500 34px "Cormorant Garamond";margin-top:18px}.cl{font:400 8px IBM Plex Mono;color:var(--bronze);letter-spacing:.12em}.pp{margin-top:auto;color:#9c9f99;font-size:12px}.pp b{display:block;color:var(--ink);font:500 17px "Cormorant Garamond"}
+.purses{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.purse{border:1px solid var(--line);background:var(--deep);padding:18px 14px;min-height:190px;display:flex;flex-direction:column;cursor:pointer}.purse.active,.purse:hover{border-color:var(--bronze)}.pn{font:500 8px IBM Plex Mono;color:#777a75;letter-spacing:.15em}.coins{font:500 34px "Cormorant Garamond";margin-top:18px}.cl{font:400 8px IBM Plex Mono;color:var(--bronze);letter-spacing:.12em}.pp{margin-top:auto;color:#9c9f99;font-size:12px}.pp b{display:block;color:var(--ink);font:500 17px "Cormorant Garamond"}
 .define{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:0 0 28px}.define div{border-left:1px solid var(--bronze2);padding-left:20px}.define strong{display:block;font:500 27px "Cormorant Garamond";margin-bottom:6px}.define span{font:400 9px/1.6 IBM Plex Mono;color:#777a75;letter-spacing:.06em}
 .builder{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}.box{border:1px solid var(--line);background:var(--deep);padding:26px}.row{display:flex;justify-content:space-between;gap:15px;padding:11px 0;border-top:1px solid #252722;color:#8f938f;font-size:13px}.row b{color:var(--ink)}.total{margin-top:15px;padding-top:17px;border-top:1px solid var(--bronze2);display:flex;justify-content:space-between;align-items:end}.total span{font:500 9px IBM Plex Mono;color:#777a75}.total b{font:500 34px "Cormorant Garamond"}blockquote{margin:0;font:500 clamp(28px,3vw,42px)/1.08 "Cormorant Garamond"}.box p{color:#8f938f;font-size:13px;line-height:1.6}
 .cerb-pricing{margin-top:16px;padding-top:16px;border-top:1px solid #2d2b25}
-.cerb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cerb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:980px}
 .cerb-tier{border:1px solid var(--line);background:#0b111b;padding:18px}
 .cerb-tier .ctag{font:500 8px IBM Plex Mono;color:#77786f;letter-spacing:.14em}
 .cerb-tier h4{font:600 24px "Cormorant Garamond";margin:10px 0 5px;letter-spacing:.04em}
@@ -34,12 +31,67 @@ h1{font-size:clamp(64px,7vw,110px);line-height:.78;margin:0 0 28px}h2{font-size:
 .cerb-tier .cprice b{font:500 32px "Cormorant Garamond";color:var(--ink)}
 .cerb-tier .cprice span{font:400 9px IBM Plex Mono;color:#777a75}
 .cerb-tier p{margin:0;color:#8f938f;font-size:12.5px;line-height:1.55}
+.filter{font:400 9px IBM Plex Mono;color:var(--ink);letter-spacing:.1em;margin:-8px 0 17px;padding:7px 9px;border:1px solid var(--bronze2);align-self:flex-start}
+.selwrap{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.selopt{border:1px solid var(--line);background:transparent;color:var(--ink);font:500 9px IBM Plex Mono;letter-spacing:.08em;padding:6px 8px;cursor:pointer}
+.selopt.active{border-color:var(--bronze);background:var(--bronze);color:#080b10}
+.selopt:disabled{cursor:not-allowed;color:#5e625e;border-style:dashed}
+.selopt:focus-visible,.sel:focus-visible,.purse:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.reserve{margin-top:14px;border:1px solid #34312a;background:linear-gradient(90deg,rgba(121,215,232,.04),#0a1019);padding:24px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.reserve .rmark{width:52px;height:52px;border:1px solid #3d5f66;display:grid;place-items:center;font:600 25px "Cormorant Garamond";color:var(--cyan)}
+.reserve h3{margin:0 0 6px;font:600 24px "Cormorant Garamond";letter-spacing:.04em}
+.reserve p{margin:0 0 12px;color:#8f938f;font-size:13px;line-height:1.6;max-width:760px}
+.reserve .bands{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.reserve .band{font:400 8px IBM Plex Mono;letter-spacing:.1em;padding:6px 9px;border:1px solid var(--line);color:#8f938f}
+.reserve .band.live{border-color:var(--bronze2);color:var(--ink)}
+.reserve .band.res{border-color:#3d5f66;color:var(--cyan)}
+.reserve .band.out{border-style:dashed;color:#5e625e}
+@media(max-width:600px){.reserve{grid-template-columns:1fr}}
+.summary{margin-top:26px;font:500 clamp(22px,2.2vw,30px)/1.2 "Cormorant Garamond";color:var(--ink);max-width:640px}
+.hiw{padding:80px 0 10px;text-align:left;border-bottom:1px solid #24241f}
+.hiw h2{margin-bottom:14px}.hiw p{max-width:640px;color:#8f938f;line-height:1.7;margin:0 0 50px}
+details.fine{border-top:1px solid #252722;margin-top:4px}
+details.fine summary{cursor:pointer;list-style:none;padding:12px 0;font:500 9px IBM Plex Mono;letter-spacing:.13em;color:var(--bronze)}
+details.fine summary::-webkit-details-marker{display:none}
+details.fine summary:before{content:"+ ";}details.fine[open] summary:before{content:"– ";}
+details.fine summary:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.mini{border:1px solid var(--bronze);background:transparent;color:#e4d3ae;font:500 8px IBM Plex Mono;letter-spacing:.1em;padding:5px 8px;cursor:pointer;margin-left:8px}
+.mini.active{background:var(--bronze);color:#080b10}
+.bonus{font:400 9px IBM Plex Mono;color:var(--cyan);letter-spacing:.08em;margin:-10px 0 17px}
 .cerb-note{margin-top:10px;font:400 8px/1.6 IBM Plex Mono;color:#666a67;letter-spacing:.06em}
+.estimate-note{font:400 11px/1.55 Inter,sans-serif;color:#92958f;margin:10px 0 0}.row label{max-width:70%}
 @media(max-width:700px){.cerb-grid{grid-template-columns:1fr}}
+
+.heads-intro{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px}
+.heads-card{border:1px solid var(--line);background:var(--deep);padding:24px}
+.heads-card strong{display:block;font:500 30px/1.05 "Cormorant Garamond";margin-bottom:7px}
+.heads-card span{font:400 9px/1.6 IBM Plex Mono;color:#777a75;letter-spacing:.06em}
+.heads-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.head-pack{border:1px solid var(--line);background:#0b111b;padding:20px;min-height:230px;display:flex;flex-direction:column}
+.head-pack.featured{border-color:var(--bronze2)}
+.head-pack .hlabel{font:500 8px IBM Plex Mono;color:#77786f;letter-spacing:.14em}
+.head-pack h3{font:600 25px "Cormorant Garamond";margin:12px 0 7px;letter-spacing:.03em}
+.head-pack .count{font:500 38px/1 "Cormorant Garamond";color:var(--ink);margin:10px 0 4px}
+.head-pack .count small{font:400 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.08em}
+.head-pack p{color:#8f938f;font-size:12.5px;line-height:1.55;margin:10px 0 0}
+.head-pack .head-note{margin-top:auto;padding-top:16px;font:400 8px/1.5 IBM Plex Mono;color:#666a67;letter-spacing:.07em}
+@media(max-width:980px){.heads-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.heads-intro,.heads-grid{grid-template-columns:1fr}}
+
+.cmp-wrap{overflow-x:auto;border:1px solid var(--line);background:var(--deep)}
+.cmp{width:100%;border-collapse:collapse;min-width:620px}
+.cmp th,.cmp td{text-align:left;padding:16px 20px;border-top:1px solid #252722;font-size:13px;line-height:1.55;vertical-align:top}
+.cmp thead th{border-top:0;font:500 9px IBM Plex Mono;letter-spacing:.14em;color:#77786f}
+.cmp thead th.us{color:var(--bronze)}
+.cmp tbody th{font:500 9px IBM Plex Mono;letter-spacing:.1em;color:#77786f;width:22%}
+.cmp td{color:#8f938f;width:39%}
+.cmp td.us{color:var(--ink);background:rgba(183,154,99,.05);border-left:1px solid var(--bronze2)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.cmp-foot{margin-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:end}
+.cmp-foot blockquote{max-width:620px}
 .faq{display:grid;grid-template-columns:1fr 1fr;gap:10px}.faq article{border:1px solid var(--line);padding:20px;background:#0b111b}.faq h3{font:600 19px "Cormorant Garamond";margin:0 0 8px}.faq p{margin:0;color:#8f938f;font-size:13px;line-height:1.6}
 .cta{text-align:center;padding:70px 0 10px}.cta p{max-width:680px;margin:18px auto;color:#92958f;line-height:1.7}.cta a{display:inline-block;border:1px solid var(--bronze);padding:14px 18px;text-decoration:none;color:#e4d3ae;font:500 10px IBM Plex Mono;letter-spacing:.13em}
-
-@media(max-width:1100px){.modes{grid-template-columns:1fr}.purses{grid-template-columns:repeat(3,1fr)}.card{min-height:0}}
+@media(max-width:1100px){.modes{grid-template-columns:1fr}.purses{grid-template-columns:repeat(2,1fr)}.card{min-height:0}}
 @media(max-width:850px){.hero,.head,.builder,.define{grid-template-columns:1fr}.visual{border-left:0;border-top:1px solid #24241f}}
 @media(max-width:600px){main{padding-left:20px;padding-right:20px}.purses{grid-template-columns:repeat(2,1fr)}.faq{grid-template-columns:1fr}.cerb{grid-template-columns:auto 1fr}.cerb small{grid-column:1/-1;text-align:left}}
 </style>
@@ -62,78 +114,150 @@ h1{font-size:clamp(64px,7vw,110px);line-height:.78;margin:0 0 28px}h2{font-size:
 </header>
 <main>
 <section class="hero">
-<div><div class="k">PRICING / SIMPLE ON THE SURFACE</div><h1>CHOOSE HOW<br>MEDUSA HUNTS.</h1><p class="lead">Your subscription decides what Medusa does with each opportunity. Your Purse decides how many opportunities she can deliver. Add Cerberus when the stakes justify deeper verification.</p><div class="rule">SAME PREMIUM EVIDENCE STANDARD AT EVERY LEVEL.</div></div>
+<div><div class="k">PRICING / SIMPLE ON THE SURFACE</div><h1>CHOOSE HOW<br>MEDUSA HUNTS.</h1><p class="lead">Your plan decides what Medusa does with each opportunity. A Purse tops up how many she delivers.</p><p class="summary">From £149 a month. Qualified opportunities, not lists. Top up when you need more.</p><div class="rule">PREMIUM VERIFIES THE COMPANY. CERBERUS VERIFIES THE PEOPLE. CERBERUS PACK ADDS FINANCIAL DEPTH ON TOP.</div></div>
 <div class="visual"><img src="assets/logo-large.svg" alt="Medusa Heads mark" class="hero-mark">
 <div class="cap">MODEL / <b>SUBSCRIPTION + COINS</b><br>QUALITY / PREMIUM BY DEFAULT<br>SCALE / YOUR CHOICE</div></div>
 </section>
 
+<section class="sec" id="compare">
+<div class="head"><div><div class="k">01 / THE CREAM, NOT THE CARTON</div><h2>SKIM THE CREAM.<br>LEAVE THE LIST.</h2></div><p class="copy">Contact databases sell you records and leave the judgement to you. Medusa does the judgement first: every organisation is researched, evidenced and qualified against your criteria before it reaches you. If it doesn't make the cut, you never see it, and it never uses a Coin.</p></div>
+<div class="cmp-wrap"><table class="cmp">
+<thead><tr><th scope="col"><span class="sr">Compared</span></th><th scope="col">LEAD LISTS</th><th scope="col" class="us">MEDUSA</th></tr></thead>
+<tbody>
+<tr><th scope="row">WHAT YOU GET</th><td>Records that match your filters</td><td class="us">Organisations that match your criteria, with evidence</td></tr>
+<tr><th scope="row">WHO QUALIFIES THEM</th><td>You, after you've paid</td><td class="us">Medusa, before delivery</td></tr>
+<tr><th scope="row">REJECTS AND DUPLICATES</th><td>Still use your credits</td><td class="us">Never use a Coin</td></tr>
+<tr><th scope="row">WHY THIS LEAD</th><td>Job title and company size</td><td class="us">Source evidence and reasoning you can check</td></tr>
+<tr><th scope="row">OVER TIME</th><td>Same filters, same results</td><td class="us">Sharper, from your outcome feedback</td></tr>
+<tr><th scope="row">WHO RUNS IT</th><td>Someone building searches and cleaning exports</td><td class="us">Your Heads, running every month</td></tr>
+</tbody></table></div>
+<div class="cmp-foot"><blockquote>Fewer leads. Every one worth the call.</blockquote><div class="rule">LEAD LISTS SELL VOLUME. MEDUSA SELLS JUDGEMENT.</div></div>
+</section>
 <section class="sec">
-<div class="head"><div><div class="k">01 / CHOOSE YOUR HUNT</div><h2>HOW FAR SHOULD<br>MEDUSA GO?</h2></div><p class="copy">The subscription controls capability, not research quality. Every Medusa opportunity is evidence-qualified. Higher levels take the opportunity further — from discovery, to contact enrichment, to downstream execution. Pursue starts from the base service price, with the final monthly cost depending on the connected execution partner and its own usage costs.</p></div>
+<div class="head"><div><div class="k">02 / CHOOSE YOUR PLAN</div><h2>HOW FAR SHOULD<br>MEDUSA GO?</h2></div><p class="copy">Every plan starts with Premium company verification using Medusa’s core public and open evidence. Higher plans take each qualified opportunity further and let you choose a tighter maximum selection band. Only organisations meeting the qualification standard are delivered.</p></div>
 <div class="modes">
-<article class="card" data-mode="Seek" data-price="149"><div class="tag">MODE / 01</div><h3>SEEK</h3><div class="strap">Find the organisations worth pursuing.</div><div class="price"><b>£149</b> <span>/ MONTH · EX VAT</span></div><div class="gold">100 MEDUSA COINS INCLUDED / MONTH</div><ul><li>Build and run specialist Heads</li><li>Evidence-qualified opportunities</li><li>Strong / Possible classification</li><li>Source evidence and reasoning</li><li>Outcome feedback sharpens the Head</li></ul><button class="sel active">SELECT SEEK</button></article>
-<article class="card featured" data-mode="Hunt" data-price="499"><div class="tag">MODE / 02</div><h3>HUNT</h3><div class="strap">Find the opportunity — then enrich it for pursuit.</div><div class="price"><b>£499</b> <span>/ MONTH · EX VAT</span></div><div class="gold">400 MEDUSA COINS INCLUDED / MONTH</div><ul><li>Everything in Seek</li><li>Relevant contact discovery</li><li>Contact and role enrichment</li><li>Priority pursuit queues</li><li>Prepared for downstream handoff</li></ul><button class="sel">SELECT HUNT</button></article>
-<article class="card" data-mode="Pursue" data-price="799"><div class="tag">MODE / 03</div><h3>PURSUE</h3><div class="strap">Hand the opportunity directly into execution.</div><div class="price"><b>From £799</b> <span>/ MONTH · EX VAT</span></div><div class="gold">COIN ALLOWANCE / EXECUTION MIX CONFIRMED WITH PARTNER</div><ul><li>Everything in Hunt</li><li>Connected downstream execution</li><li>Partner / CRM / outreach handoff</li><li>Outcome loop back into Medusa</li><li>Automation and integration controls</li><li>Execution cost varies by connected partner</li></ul><button class="sel">SELECT PURSUE</button></article>
+<article class="card" data-mode="Seek" data-price="149" data-coins="50" data-filter="40"><div class="tag">MODE / 01</div><h3>SEEK</h3><div class="strap">Find the organisations worth pursuing.</div><div class="price"><b>£149</b> <span>/ MONTH · EX VAT</span></div><div class="gold">3 HEADS + 50 MEDUSA COINS INCLUDED / MONTH</div><div class="bonus">+100 BONUS COINS IN YOUR FIRST MONTH</div><div class="filter">SELECTION CEILING: TOP 40% OF SCANS</div><ul><li>Three specialist Heads hunting for you</li><li>Evidence-qualified opportunities</li><li>Source evidence and reasoning</li><li>Your feedback sharpens each Head</li></ul><button class="sel active">SELECT SEEK</button></article>
+<article class="card featured" data-mode="Enrich" data-price="349" data-coins="150" data-filter="30"><div class="tag">MODE / 02</div><h3>ENRICH</h3><div class="strap">Identify the likely decision-makers and add the contact context around the opportunity.</div><div class="price"><b>£349</b> <span>/ MONTH · EX VAT</span></div><div class="gold">3 HEADS + 150 MEDUSA COINS INCLUDED / MONTH</div><div class="filter">SELECTION CEILING: TOP 30–40% OF SCANS</div><ul><li>Everything in Seek</li><li>Likely decision-makers identified</li><li>Roles and contact details for outreach</li><li>Context for a first message</li></ul><button class="sel">SELECT ENRICH</button></article>
+<article class="card" data-mode="Pursue" data-price="399" data-coins="150" data-filter="20"><div class="tag">MODE / 03</div><h3>PURSUE</h3><div class="strap">Send qualified opportunities straight into your outreach campaigns.</div><div class="price"><b>From £399</b> <span>/ MONTH · EX VAT</span></div><div class="gold">3 HEADS + 150 MEDUSA COINS INCLUDED / MONTH</div><div class="filter">SELECTION CEILING: TOP 20–40% OF SCANS</div><ul><li>Everything in Enrich</li><li>Sent straight into your outreach campaigns</li><li>Replies feed back into Medusa</li><li>Needs your own outreach platform, billed by its provider</li></ul><button class="sel">SELECT PURSUE</button></article>
 </div>
+</section>
+<section class="sec" id="cerberus">
+<div class="head"><div><div class="k">03 / OPTIONAL VERIFICATION</div><h2>THREE LEVELS<br>OF CONFIDENCE.</h2></div><p class="copy">Medusa Premium verifies the company as standard. When a Hunt deserves more scrutiny, add Cerberus to verify the people Enrich identifies. Where financial depth is worth it, add Cerberus Pack on top for paid-data financial checking.</p></div>
 <div class="cerb" id="cerberus-box">
   <div class="cmark">C</div>
   <div>
     <h3>CERBERUS / DEEPER VERIFICATION</h3>
-    <p>Standard Medusa research is already premium. Cerberus tests the strength of each opportunity — challenging the evidence, checking assumptions and looking for contradictions before it earns a higher-confidence status.</p>
-    <div id="cerberus-reveal" class="cerb-pricing" hidden>
+    <p>Choose how deeply Medusa should challenge each delivered opportunity. Verification is charged only on delivered Coins while the selected checker is switched on.</p>
+    <div id="cerberus-reveal" class="cerb-pricing">
       <div class="cerb-grid">
-        <article class="cerb-tier">
-          <div class="ctag">CERBERUS / 01</div>
-          <h4>SEEK</h4>
-          <div class="cprice"><b>£49</b> <span>/ MONTH · EX VAT</span></div>
-          <p>Medusa qualifies the opportunity. Cerberus then tests its strength with broader source checking, contradiction detection and tougher evidence rules before action.</p>
+        <article class="cerb-tier" data-cerb="Cerberus" data-rate="0.30" data-label="CERBERUS">
+          <div class="ctag">PEOPLE VERIFICATION</div>
+          <h4>CERBERUS</h4>
+          <div class="cprice"><b>£0.30</b> <span>/ COIN · EX VAT</span></div>
+          <p>Verifies the people Enrich has identified: role accuracy, whether they are still at the company, decision-making relevance, company relationships, officer or ownership context where useful, source freshness and contradictions. It strengthens the human side of the case without changing the Head’s selection rules.</p>
+          <button class="sel cerb-select" type="button">ADD CERBERUS</button>
         </article>
-        <article class="cerb-tier">
-          <div class="ctag">CERBERUS / 02</div>
-          <h4>HUNT</h4>
-          <div class="cprice"><b>£149</b> <span>/ MONTH · EX VAT</span></div>
-          <p>Cerberus Seek plus a more active strength-testing workflow for larger volumes, higher-value opportunities and cases where the cost of being wrong is greater.</p>
+        <article class="cerb-tier featured" data-cerb="Cerberus Pack" data-rate="0.80" data-label="CERBERUS + PACK">
+          <div class="ctag">FINANCIAL VERIFICATION</div>
+          <h4>CERBERUS PACK</h4>
+          <div class="cprice"><b>+£0.50</b> <span>/ COIN · EX VAT</span></div>
+          <p>Includes the Cerberus people checks, then adds deeper financial verification using relevant licensed paid-data sources where available: richer company financials, credit or risk indicators, ownership context and commercial-strength signals selected for that Hunt.</p>
+          <button class="sel cerb-select" type="button">ADD CERBERUS PACK</button>
         </article>
       </div>
-      <div class="cerb-note" style="color:var(--bronze);margin-bottom:8px">MEDUSA QUALIFIES. CERBERUS CHALLENGES.</div>
-      <div class="cerb-note">CERBERUS IS A MONTHLY ADD-ON TO THE MEDUSA SUBSCRIPTION AND DOES NOT REPLACE THE CUSTOMER'S PURSE.</div>
+      <div class="cerb-note" style="color:var(--bronze);margin-bottom:8px">PREMIUM VERIFIES THE COMPANY. CERBERUS VERIFIES THE PEOPLE. CERBERUS PACK ADDS FINANCIAL DEPTH ON TOP.</div>
+      <div class="cerb-note">CERBERUS COSTS £0.30 PER DELIVERED COIN. CERBERUS PACK ADDS £0.50 ON TOP, MAKING £0.80 TOTAL PER PACK-CHECKED COIN. VERIFICATION DOES NOT REPLACE THE PURSE.</div>
     </div>
   </div>
   <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-    <small>OPTIONAL VERIFICATION LAYER</small>
-    <button class="sel" id="cerberus-toggle" type="button">VIEW CERBERUS PRICING</button>
+    <small>WORKS WITH ANY PLAN</small>
+    <button class="sel active" id="cerberus-toggle" type="button">HIDE VERIFICATION PRICING</button>
   </div>
 </div>
 </section>
-
 <section class="sec">
-<div class="head"><div><div class="k">02 / FILL YOUR PURSE</div><h2>ONE COIN.<br>ONE OPPORTUNITY.</h2></div><p class="copy">Your subscription includes a monthly Coin allowance. The Purse is the scalable top-up layer: buy a small extra Purse when you need a little more volume, or a large shared Purse for agency or corporate use. Bigger Purses reduce unit cost without lowering the evidence standard.</p></div>
-<div class="define"><div><strong>1 Medusa Coin = 1 newly delivered qualified opportunity.</strong><span>DUPLICATES, PREVIOUSLY DELIVERED ORGANISATIONS AND REJECTED RESULTS DO NOT CONSUME ANOTHER COIN.</span></div><div><strong>The Purse scales. The Head does not get careless.</strong><span>HEAD-LEVEL MARKET SANITY LIMITS PROTECT QUALITY IN FINITE NICHES.</span></div></div>
+<div class="head"><div><div class="k">04 / NEED MORE VOLUME?</div><h2>ONE COIN.<br>ONE OPPORTUNITY.</h2></div><p class="copy">Each subscription includes a monthly Medusa Coin allowance. The Purse is the top-up layer: buy one when you need more volume. Bigger Purses reduce unit cost without lowering the evidence standard. The Purses shown here are one-off purchases that roll over for 90 days; recurring Purses save 10%.</p></div>
+<div class="define"><div><strong>1 Medusa Coin = 1 newly delivered qualified opportunity.</strong><span>DUPLICATES, PREVIOUSLY DELIVERED ORGANISATIONS AND REJECTED RESULTS DO NOT CONSUME ANOTHER COIN.</span></div><div><strong>The Purse scales. The Head does not get careless.</strong><span>WHEN A NICHE RUNS DRY, RELEASE THE HEAD’S RESERVE OR LET IT MOVE TO MONITORING. IT NEVER LOWERS THE BAR TO FILL A PURSE.</span></div></div>
 <div class="purses">
-<article class="purse active" data-name="Trial" data-coins="50" data-price="75"><div class="pn">TRIAL PURSE</div><div class="coins">50</div><div class="cl">MEDUSA COINS</div><div class="pp"><b>£75</b>£1.50 / opportunity · ex VAT</div></article>
 <article class="purse" data-name="Starter" data-coins="150" data-price="149"><div class="pn">STARTER PURSE</div><div class="coins">150</div><div class="cl">MEDUSA COINS</div><div class="pp"><b>£149</b>£0.99 / opportunity · ex VAT</div></article>
 <article class="purse" data-name="Growth" data-coins="500" data-price="399"><div class="pn">GROWTH PURSE</div><div class="coins">500</div><div class="cl">MEDUSA COINS</div><div class="pp"><b>£399</b>£0.80 / opportunity · ex VAT</div></article>
 <article class="purse" data-name="Scale" data-coins="1500" data-price="899"><div class="pn">SCALE PURSE</div><div class="coins">1,500</div><div class="cl">MEDUSA COINS</div><div class="pp"><b>£899</b>£0.60 / opportunity · ex VAT</div></article>
-<article class="purse" data-name="Agency" data-coins="5000" data-price="2250"><div class="pn">AGENCY PURSE</div><div class="coins">5,000</div><div class="cl">MEDUSA COINS</div><div class="pp"><b>£2,250</b>£0.45 / opportunity · ex VAT</div></article>
-<article class="purse" data-name="Corporate" data-coins="15000" data-price="5250"><div class="pn">CORPORATE PURSE</div><div class="coins">15,000+</div><div class="cl">MEDUSA COINS</div><div class="pp"><b>From £5,250</b>from £0.35 / opportunity · ex VAT</div></article>
+<article class="purse" data-name="Agency &amp; Corporate" data-coins="5000" data-price="0" data-custom="1"><div class="pn">AGENCY &amp; CORPORATE</div><div class="coins">5,000+</div><div class="cl">MEDUSA COINS</div><div class="pp"><b>Talk to us</b>Volume pricing · shared Purse</div></article>
 </div>
 <div class="builder">
-<div class="box"><div class="k">YOUR MEDUSA / EXAMPLE</div><div class="row"><span>Hunt level</span><b id="sm">SEEK</b></div><div class="row"><span>Included monthly Coins</span><b id="si">100</b></div><div class="row"><span>Purse</span><b id="sp">TRIAL / 50 COINS</b></div><div class="row"><span>Evidence standard</span><b>PREMIUM / FIXED</b></div><div class="total"><span>ILLUSTRATIVE MONTHLY TOTAL</span><b id="st">£224</b></div></div>
-<div class="box"><div class="k">THE PRICING PRINCIPLE</div><blockquote>Choose how Medusa hunts. Then choose how full you want her purse.</blockquote><p>A small company can run Pursue with a small Purse. A corporate team can run Seek with a huge one. Capability and volume scale independently.</p></div>
+<div class="box"><div class="k">YOUR MEDUSA / EXAMPLE</div><div class="row"><span>Medusa level</span><b id="sm">SEEK</b></div><div class="row"><span>Heads included</span><b>3</b></div><div class="row"><span>Included monthly Coins</span><b id="si">50</b></div><div class="row"><span>First-month bonus</span><b id="sb">+100 COINS</b></div><div class="row"><span>Purse (one-off)</span><b id="sp">NONE</b></div><details class="fine"><summary>FINE-TUNE</summary><div class="row"><span>Selection ceiling per Head</span><span class="selwrap" role="group" aria-label="Selection per Head"><button type="button" class="selopt" data-f="20">TOP 20%</button><button type="button" class="selopt" data-f="30">TOP 30%</button><button type="button" class="selopt active" data-f="40">TOP 40%</button></span></div></details><div class="row"><span>Verification</span><span><b id="sc">PREMIUM / COMPANY</b><button type="button" class="mini verify-mini" data-check="Cerberus">CERBERUS</button><button type="button" class="mini verify-mini" data-check="Cerberus Pack">PACK</button></span></div><div class="row" id="cerb-estimate-row" hidden><label for="verified-coins">Expected checked deliveries / month</label><input type="number" id="verified-coins" min="0" step="1" value="0" inputmode="numeric" aria-describedby="cerb-estimate-note" style="width:94px;text-align:right;background:#080c12;color:var(--ink);border:1px solid var(--bronze2);padding:7px;font:inherit"></div><p id="cerb-estimate-note" class="estimate-note" hidden>Enter your expected number of delivered opportunities to be checked. Cerberus costs £0.30 per delivered Coin. Cerberus Pack adds £0.50 on top of Cerberus, making the total £0.80 per Pack-checked Coin.</p><div class="row"><span>Core evidence</span><b>PREMIUM / COMPANY VERIFIED</b></div><div class="row" id="ir" hidden><span>Outreach</span><b>YOUR OWN PLATFORM, BILLED SEPARATELY</b></div><div class="total"><span>MONTHLY MEDUSA SUBSCRIPTION</span><b id="st">£149</b></div><div class="row"><span>One-off Purse purchase</span><b id="oneoff">£0</b></div><div class="row" id="cerb-cost-row" hidden><span id="cerb-cost-label">Estimated verification usage / month</span><b id="cerb-total">£0</b></div><div class="total"><span>ESTIMATED MONTHLY COST (EXCL. ONE-OFF PURSE)</span><b id="monthly-estimate">£149</b></div><p class="estimate-note">All amounts ex VAT. Medusa subscription is recurring. Selected Purse is a one-off purchase; Cerberus is charged only on actual delivered opportunities checked. Cerberus Pack adds a further £0.50 per Pack-checked Coin on top of the £0.30 Cerberus charge.</p></div>
+<div class="box"><div class="k">THE PRICING PRINCIPLE</div><blockquote>Choose how Medusa hunts. Then choose how full you want her purse.</blockquote><p>A small company can run Pursue with no Purse. A corporate team can run Seek with a huge one. Capability and volume scale independently. Click a Purse again to remove it. The calculator separates one-off Purse purchases from recurring subscription charges and optional verification usage. Premium company verification is built in; Enrich identifies likely decision-makers, Cerberus verifies those people, then Cerberus Pack adds financial depth when the extra scrutiny is worth it. Selection per Head lives under Fine-tune.</p></div>
 </div>
 </section>
+<div class="hiw" id="how-it-works"><div class="k">HOW IT WORKS</div><h2>UNDER THE SURFACE.</h2><p>Everything above is all you need to start. The detail below is for when you want to know how Medusa hunts, what happens when a market runs dry, and how to add more Heads.</p></div>
+<section class="sec" id="heads">
+<div class="head"><div><div class="k">05 / HOW MEDUSA HUNTS</div><h2>START WITH THREE.<br>GROW THE ESTATE.</h2></div><p class="copy">Every Medusa subscription includes three active Heads. That is enough to test different markets, ICPs or opportunity types without turning the product into a toy. When the business needs more hunting lanes, or a niche moves to Monitoring, Head capacity scales separately from Coins.</p></div>
 
+<div class="heads-intro">
+  <div class="heads-card"><strong>3 Heads included with every subscription.</strong><span>RUN DIFFERENT HUNTS, COMPARE RESULTS, THEN PUT MORE COINS BEHIND THE HEADS THAT EARN IT.</span></div>
+  <div class="heads-card"><strong>Heads define what Medusa is looking for.</strong><span>COINS CONTROL HOW MUCH SHE HUNTS. MORE HEADS MEAN MORE DISTINCT OPPORTUNITY TYPES, MARKETS OR CLIENT CAMPAIGNS.</span></div>
+</div>
+
+<div class="heads-grid">
+  <article class="head-pack">
+    <div class="hlabel">INCLUDED</div>
+    <h3>CORE ESTATE</h3>
+    <div class="count">3 <small>HEADS</small></div>
+    <p>Included in Seek, Enrich and Pursue. Enough for a genuine trial across multiple ICPs or commercial angles.</p>
+    <div class="head-note">NO EXTRA MONTHLY HEAD CHARGE.</div>
+  </article>
+
+  <article class="head-pack">
+    <div class="hlabel">EXPANSION / 01</div>
+    <h3>STARTER ESTATE</h3>
+    <div class="count">+3 <small>HEADS</small></div>
+    <p>Add another small group of specialist Heads when the first three prove useful.</p>
+    <div class="head-note">£49 / MONTH · EX VAT</div>
+  </article>
+
+  <article class="head-pack featured">
+    <div class="hlabel">EXPANSION / 02</div>
+    <h3>AGENCY ESTATE</h3>
+    <div class="count">+10 <small>HEADS</small></div>
+    <p>Run multiple client, territory or vertical Hunts from one account with shared Coin capacity.</p>
+    <div class="head-note">£149 / MONTH · EX VAT · TEAM / CLIENT STRUCTURE · SHARED PURSE.</div>
+  </article>
+
+  <article class="head-pack">
+    <div class="hlabel">EXPANSION / 03</div>
+    <h3>CORPORATE ESTATE</h3>
+    <div class="count">25+ <small>HEADS</small></div>
+    <p>Custom multi-team Head capacity from 25 Heads upward, with permissions and governance for larger commercial operations.</p>
+    <div class="head-note">FROM £349 / MONTH · EX VAT · CUSTOM CAPACITY · GOVERNANCE · SUPPORT.</div>
+  </article>
+</div>
+<div class="reserve" id="reserve">
+  <div class="rmark" aria-hidden="true">R</div>
+  <div>
+    <h3>THE RESERVE</h3>
+    <p>Nothing Medusa researches is wasted. Opportunities that clear the qualification bar but miss your Head’s chosen selection band are ranked and held in its Reserve, up to the top 50% of scans. When a hunting ground stops yielding at your selection, you can release another qualifying band from the Reserve instead of waiting for new scans. Released opportunities are re-checked before delivery and use one Coin each, like any other.</p>
+    <div class="bands" aria-label="Example: a Head running at top 30%">
+      <span class="band live">TOP 30% · DELIVERED</span><span class="band res">30–50% · HELD IN RESERVE</span><span class="band out">BELOW 50% OR BELOW THE BAR · NOT KEPT</span>
+    </div>
+  </div>
+</div>
+</section>
 <section class="sec">
-<div class="head"><div><div class="k">03 / SIMPLE RULES</div><h2>NO CREDIT<br>MATHEMATICS.</h2></div><p class="copy">One Coin always means one newly delivered qualified opportunity. The subscription changes what happens around that opportunity, not the meaning of the Coin.</p></div>
+<div class="head"><div><div class="k">06 / SIMPLE RULES</div><h2>NO CREDIT<br>MATHEMATICS.</h2></div><p class="copy">One Coin always means one newly delivered qualified opportunity. The subscription changes what happens around that opportunity, not the meaning of the Coin.</p></div>
 <div class="faq">
-<article><h3>Do better plans get better research?</h3><p>No. Standard Medusa research stays premium. Higher modes add enrichment and execution capability.</p></article>
-<article><h3>What if Medusa finds a duplicate?</h3><p>A repeat organisation does not consume another Coin.</p></article>
-<article><h3>Can I top up without changing plan?</h3><p>Yes. That is the point of the Purse.</p></article>
-<article><h3>Where does Cerberus fit?</h3><p>After qualification. Medusa finds the opportunity; Cerberus tests its strength.</p></article>
+<article><h3>Do better plans get better research?</h3><p>Same evidence standard, more selective options. Seek can select up to the top 40% of scanned organisations, Enrich as tightly as the top 30%, and Pursue as tightly as the top 20%. These are ceilings, not delivery guarantees: an organisation must still clear the qualification standard. Each delivery shows how many organisations were scanned.</p></article>
+<article><h3>What if Medusa finds a duplicate?</h3><p>A repeat organisation does not consume another Coin. Neither does a rejected result.</p></article>
+<article><h3>Can I top up without changing plan?</h3><p>Yes. Add a Purse whenever you need more volume. One-off Purses roll over for 90 days.</p></article>
+<article><h3>What happens when a niche runs dry?</h3><p>Release the next band from the Head’s Reserve, or let it move to Monitoring and report only new entrants and changes. Add another Head to open a new market.</p></article>
+<article><h3>Can I change selection later?</h3><p>Yes, per Head, at any time. Loosen it freely; tighten it to your plan’s limit. Upgrading unlocks tighter selection.</p></article>
+<article><h3>Does the Reserve cost extra?</h3><p>No. Holding it is included. A released opportunity is re-checked, then uses one Coin like any other delivery.</p></article>
+<article><h3>Do I need an outreach platform?</h3><p>Only for Pursue. Connect the account you already use, or open one with a supported provider; they bill you directly.</p></article>
+<article><h3>How are Cerberus checks charged?</h3><p>Premium company verification is included. Cerberus adds people-level verification at £0.30 per delivered Coin. Cerberus Pack sits on top of Cerberus and adds deeper financial verification using relevant paid-data sources for a further £0.50 per delivered Coin, making £0.80 total for a Pack-checked Coin.</p></article>
 </div>
 </section>
 
 <div class="rule" style="margin-top:28px">ALL PRICES EXCLUDE VAT WHERE APPLICABLE.</div>
-<section class="cta"><div class="k">THE HUNT IS ON</div><h2>START SMALL. PROVE THE HEAD.<br>OPEN THE PURSE WHEN IT EARNS IT.</h2><p>The commercial model scales from a single experimental Head to agency and corporate use without changing the basic rules.</p><a href="index.html">BUILD MY FIRST HEAD →</a><div class="rule">ILLUSTRATIVE PRICES — CONFIRM AGAINST CLIENT ZERO UNIT ECONOMICS BEFORE LAUNCH.</div></section>
+<section class="cta"><div class="k">THE HUNT IS ON</div><h2>START SMALL. PROVE THE HEAD.<br>OPEN THE PURSE WHEN IT EARNS IT.</h2><p>The commercial model scales from a single experimental Head to agency and corporate use without changing the basic rules.</p><a href="index.html">BUILD MY FIRST HEAD →</a><div class="rule">ILLUSTRATIVE PRICES — PURSE AND VERIFICATION RATES TO BE CONFIRMED AGAINST CLIENT ZERO UNIT ECONOMICS AND PAID-DATA COSTS BEFORE LAUNCH. CERBERUS PACK IS +£0.50 PER COIN ON TOP OF CERBERUS.</div></section>
 </main>
 <footer class="site-footer">
 <div class="sf-inner">
@@ -147,23 +271,51 @@ h1{font-size:clamp(64px,7vw,110px);line-height:.78;margin:0 0 28px}h2{font-size:
 <div class="sf-bottom"><div><span>© 2026 MEDUSA HEADS · ALL PRICES EXCLUDE VAT WHERE APPLICABLE</span><span><b>MANY EYES · ONE PURPOSE</b></span></div></div>
 </footer>
 <script>
-const modes=[...document.querySelectorAll('.card')],purses=[...document.querySelectorAll('.purse')];
-let m=modes[0],p=purses[0];
+const modes=[...document.querySelectorAll('.card')],purses=[...document.querySelectorAll('.purse')],checks=[...document.querySelectorAll('.cerb-tier')];
+const gbp=n=>'£'+n.toLocaleString('en-GB',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+let m=modes[0],p=null,check=null,f=40;const opts=[...document.querySelectorAll('.selopt')],miniChecks=[...document.querySelectorAll('.verify-mini')];
+function selectCheck(name){
+  check=check&&check.dataset.cerb===name?null:checks.find(x=>x.dataset.cerb===name)||null;
+  checks.forEach(x=>{const on=x===check;x.classList.toggle('active',on);const b=x.querySelector('.cerb-select');b.classList.toggle('active',on);b.textContent=on?(x.dataset.cerb.toUpperCase()+' ADDED'):('ADD '+x.dataset.cerb.toUpperCase());});
+  miniChecks.forEach(b=>b.classList.toggle('active',!!check&&b.dataset.check===check.dataset.cerb));
+  upd();
+}
 function upd(){
+  const inc=Number(m.dataset.coins),seek=m.dataset.mode==='Seek';
   document.getElementById('sm').textContent=m.dataset.mode.toUpperCase();
-  document.getElementById('sp').textContent=p.dataset.name.toUpperCase()+' / '+Number(p.dataset.coins).toLocaleString('en-GB')+' COINS';
-  document.getElementById('si').textContent=m.dataset.mode==='Seek'?'100':m.dataset.mode==='Hunt'?'400':'Partner-dependent';
-    document.getElementById('st').textContent=(m.dataset.mode==='Pursue'?'From ':'')+'£'+(Number(m.dataset.price)+Number(p.dataset.price)).toLocaleString('en-GB');
+  document.getElementById('si').textContent=inc;
+  const tight=Number(m.dataset.filter);
+  if(f<tight)f=tight;
+  opts.forEach(o=>{const v=Number(o.dataset.f),locked=v<tight;o.disabled=locked;o.classList.toggle('active',v===f);
+    o.textContent='TOP '+v+'%'+(locked?(v===20?' · PURSUE':' · ENRICH'):'');o.title=locked?'Available on a higher plan':'';});
+  document.getElementById('sb').textContent=seek?'+100 COINS':'—';
+  document.getElementById('ir').hidden=m.dataset.mode!=='Pursue';
+  const custom=p&&p.dataset.custom;
+  document.getElementById('sp').textContent=p?p.dataset.name.toUpperCase()+' / '+Number(p.dataset.coins).toLocaleString('en-GB')+(custom?'+':'')+' COINS':'NONE';
+  const base=Number(m.dataset.price);
+  const deliveriesInput=document.getElementById('verified-coins');
+  const deliveries=Math.max(0,Math.floor(Number(deliveriesInput.value)||0));
+  const rate=check?Number(check.dataset.rate):0;
+  const verifyCost=check?Math.round(deliveries*rate*100)/100:0;
+  document.getElementById('cerb-estimate-row').hidden=!check;
+  document.getElementById('cerb-estimate-note').hidden=!check;
+  document.getElementById('cerb-cost-row').hidden=!check;
+  document.getElementById('sc').textContent=check?(check.dataset.label+' / £'+rate.toFixed(2)+' PER DELIVERED COIN'):'PREMIUM / COMPANY';
+  document.getElementById('cerb-cost-label').textContent=check?('Estimated '+check.dataset.label+' usage / month'):'Estimated verification usage / month';
+  document.getElementById('st').textContent=(m.dataset.mode==='Pursue'?'From ':'')+gbp(base);
+  document.getElementById('oneoff').textContent=custom?'CONTACT US':(p?gbp(Number(p.dataset.price)):'£0');
+  document.getElementById('cerb-total').textContent=gbp(verifyCost);
+  document.getElementById('monthly-estimate').textContent=(m.dataset.mode==='Pursue'?'From ':'')+gbp(base+verifyCost);
 }
 modes.forEach(x=>x.querySelector('.sel').onclick=()=>{modes.forEach(y=>y.querySelector('.sel').classList.remove('active'));m=x;x.querySelector('.sel').classList.add('active');upd()});
-purses.forEach(x=>x.onclick=()=>{purses.forEach(y=>y.classList.remove('active'));p=x;x.classList.add('active');upd()});
+purses.forEach(x=>x.onclick=()=>{const same=p===x;purses.forEach(y=>y.classList.remove('active'));p=same?null:x;if(p)x.classList.add('active');upd()});
+opts.forEach(o=>o.onclick=()=>{if(!o.disabled){f=Number(o.dataset.f);upd();}});
+document.getElementById('verified-coins').addEventListener('input',upd);
+checks.forEach(x=>x.querySelector('.cerb-select').onclick=()=>selectCheck(x.dataset.cerb));
+miniChecks.forEach(b=>b.onclick=()=>selectCheck(b.dataset.check));
 document.getElementById('cerberus-toggle').onclick=()=>{
-  const reveal=document.getElementById('cerberus-reveal');
-  const open=reveal.hidden;
-  reveal.hidden=!open;
-  const b=document.getElementById('cerberus-toggle');
-  b.classList.toggle('active',open);
-  b.textContent=open?'HIDE CERBERUS PRICING':'VIEW CERBERUS PRICING';
+  const reveal=document.getElementById('cerberus-reveal'),open=reveal.hidden,b=document.getElementById('cerberus-toggle');
+  reveal.hidden=!open;b.classList.toggle('active',open);b.textContent=open?'HIDE VERIFICATION PRICING':'VIEW VERIFICATION PRICING';
 };
 upd();
 </script>
