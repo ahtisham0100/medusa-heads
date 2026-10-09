@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Medusa Heads — Beta Client Intake</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+:root{
+  --bg:#08111b;
+  --panel:#0c1723;
+  --panel2:#101d2b;
+  --line:rgba(255,255,255,.11);
+  --line2:rgba(242,161,74,.30);
+  --text:#eef7fb;
+  --muted:#91a7b7;
+  --cyan:#f2a14a;
+  --cyan2:#ffd4a0;
+  --good:#ffd4a0;
+  --danger:#ffb3b3;
+  --max:1060px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+  radial-gradient(circle at 80% 8%,rgba(242,161,74,.08),transparent 26%),
+  linear-gradient(180deg,#07101a 0%,#08111b 100%);
+  color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+button,input,textarea,select{font:inherit}
+a{color:inherit}
+.shell{max-width:var(--max);margin:0 auto;padding:56px 24px 90px}
+.topbar{
+  display:flex;justify-content:space-between;gap:24px;align-items:flex-start;
+  padding-bottom:24px;border-bottom:1px solid var(--line)
+}
+.brand{font-weight:900;letter-spacing:.14em;font-size:13px}
+.brand small{display:block;margin-top:7px;color:var(--muted);font-size:10px;letter-spacing:.12em;font-weight:700}
+.meta{text-align:right;font:700 10px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.kicker{margin-top:54px;color:var(--cyan);font:800 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.17em;text-transform:uppercase}
+h1{font-size:clamp(40px,7vw,76px);line-height:.98;letter-spacing:-.045em;margin:12px 0 18px;max-width:850px}
+.lead{max-width:820px;color:#aec0cc;font-size:clamp(17px,2vw,21px);line-height:1.55}
+.promise{
+  margin-top:34px;padding:18px 20px;border:1px solid var(--line2);background:rgba(242,161,74,.05);
+  color:#ffe1bc;line-height:1.55
+}
+.progress-wrap{position:sticky;top:var(--sn-h);z-index:10;background:rgba(8,17,27,.92);backdrop-filter:blur(12px);padding:16px 0;margin:32px 0 0}
+.progress-meta{display:flex;justify-content:space-between;gap:18px;color:var(--muted);font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.progress{height:4px;background:rgba(255,255,255,.08);overflow:hidden}
+.progress > span{display:block;height:100%;width:0;background:var(--cyan);transition:width .25s ease}
+form{margin-top:18px}
+.section{
+  margin-top:28px;border:1px solid var(--line);background:rgba(12,23,35,.93)
+}
+.section-head{padding:26px 26px 20px;border-bottom:1px solid var(--line)}
+.num{color:var(--cyan);font:800 10px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase}
+.section h2{font-size:28px;letter-spacing:-.025em;margin:8px 0 6px}
+.section-intro{margin:0;color:var(--muted);line-height:1.55}
+.fields{padding:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.field{min-width:0}
+.full{grid-column:1/-1}
+label,.label{display:block;font-weight:800;font-size:13px;margin-bottom:8px}
+.help{display:block;color:var(--muted);font-size:12px;font-weight:500;line-height:1.45;margin-top:4px}
+input[type="text"],input[type="url"],input[type="email"],input[type="number"],textarea,select{
+  width:100%;border:1px solid var(--line);background:#09131f;color:var(--text);
+  padding:14px 14px;outline:none;border-radius:0;transition:.15s ease
+}
+textarea{min-height:118px;resize:vertical}
+input:focus,textarea:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(242,161,74,.10)}
+.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.choice{
+  position:relative;display:flex;align-items:flex-start;gap:10px;padding:12px 13px;
+  border:1px solid var(--line);background:#09131f;cursor:pointer;min-height:46px
+}
+.choice:hover{border-color:rgba(242,161,74,.48)}
+.choice input{margin-top:2px;accent-color:#f2a14a}
+.choice span{font-size:13px;line-height:1.35;color:#dce7ee}
+.conditional{display:none}
+.conditional.show{display:block}
+.scale{display:flex;gap:10px;flex-wrap:wrap}
+.scale label{
+  margin:0;display:flex;align-items:center;justify-content:center;width:42px;height:42px;
+  border:1px solid var(--line);background:#09131f;cursor:pointer
+}
+.scale input{position:absolute;opacity:0}
+.scale label:has(input:checked){border-color:var(--cyan);background:rgba(242,161,74,.13);color:#fff}
+.note{font-size:12px;color:var(--muted);line-height:1.5}
+.final-question{
+  padding:34px;border:1px solid rgba(242,161,74,.30);background:
+  radial-gradient(circle at 90% 10%,rgba(242,161,74,.08),transparent 28%),#0a1622
+}
+.final-question h2{font-size:32px;margin:8px 0 12px}
+.actions{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-top:24px;flex-wrap:wrap}
+.btn{
+  appearance:none;border:1px solid var(--cyan);background:transparent;color:#fff3e4;
+  padding:14px 20px;font-weight:900;letter-spacing:.04em;cursor:pointer
+}
+.btn.primary{background:var(--cyan);color:#140b04}
+.btn:hover{filter:brightness(1.06)}
+.status{color:var(--muted);font-size:13px}
+.summary{
+  display:none;margin-top:28px;padding:28px;border:1px solid var(--line2);background:#09131f
+}
+.summary.show{display:block}
+.summary h3{margin:0 0 10px;font-size:24px}
+.summary pre{white-space:pre-wrap;word-break:break-word;background:#06101a;border:1px solid var(--line);padding:16px;color:#cfe7f1;max-height:360px;overflow:auto}
+.footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:#688092;font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
+.required{color:var(--cyan)}
+@media(max-width:760px){
+  .shell{padding:34px 16px 60px}
+  .topbar,.footer{display:block}
+  .meta{text-align:left;margin-top:14px}
+  .fields{grid-template-columns:1fr;padding:20px}
+  .choice-grid{grid-template-columns:1fr}
+  .section-head{padding:22px 20px 18px}
+  .full{grid-column:auto}
+}
+
+.logo-lockup{display:flex;align-items:center;gap:16px}
+.logo-lockup img{width:74px;height:74px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(242,161,74,.10))}
+.logo-copy{display:flex;flex-direction:column;gap:4px}
+.logo-name{font-family:Georgia,'Times New Roman',serif;font-size:24px;letter-spacing:.12em;color:#f2a14a;line-height:1}
+.logo-sub{font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.medusa-rule{height:1px;background:linear-gradient(90deg,#f2a14a,rgba(242,161,74,0));margin-top:18px}
+
+</style>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site-nav">
+<div class="sn-inner">
+<a class="sn-brand" href="index.html" aria-label="Medusa Heads home"><img class="sn-logo" src="assets/logo.svg" alt=""><span class="sn-name">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></span></a>
+<nav class="sn-links" id="sn-links" aria-label="Site">
+<a href="index.html">BUILD A HEAD</a>
+<div class="sn-drop"><button class="sn-dropbtn" type="button" aria-expanded="false" aria-controls="sn-flow">THE FLOW <span class="sn-caret">▾</span></button>
+<div class="sn-menu" id="sn-flow"><a href="index.html"><b>01</b> What are you seeking?</a><a href="medusa-heads-page-02-medusa-understands-v2.html"><b>02</b> Medusa understands</a><a href="medusa-heads-page-03-configure-your-head.html"><b>03</b> Configure your Head</a><a href="medusa-heads-page-04-can-medusa-see-it.html"><b>04</b> Can Medusa see it?</a><a href="medusa-heads-page-05-release-the-head.html"><b>05</b> Release the Head</a><a href="medusa-heads-page-06-hunt-results-v2.html"><b>06</b> Hunt results</a><a href="medusa-heads-page-07-pass-on-your-judgement.html"><b>07</b> Pass on your judgement</a><a href="medusa-heads-page-08-the-head-is-ready.html"><b>08</b> The Head is ready</a><a href="medusa-heads-page-09-choose-your-hunt.html"><b>09</b> Choose your hunt</a><a href="medusa-heads-page-10-my-heads.html"><b>10</b> My Heads</a></div></div>
+<a href="medusa-heads-page-10-my-heads.html">MY HEADS</a>
+<a href="pricing.html">PRICING</a>
+<a href="founding-beta.html" aria-current="page">FOUNDING BETA</a>
+<a class="sn-mobile-cta" href="index.html">BUILD A HEAD →</a>
+</nav>
+<div class="sn-right"><span class="sn-step">FOUNDING BETA <b>/ APPLICATION</b></span><a class="sn-cta" href="index.html">BUILD A HEAD →</a><button class="sn-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sn-links"><span></span><span></span><span></span></button></div>
+</div>
+</header>
+<div class="shell">
+  <div class="topbar">
+    <div class="logo-lockup">
+      <img src="assets/logo.svg" alt="Medusa Heads logo">
+      <div class="logo-copy">
+        <div class="logo-name">MEDUSA HEADS</div>
+        <div class="logo-sub">Beta Client Intake</div>
+      </div>
+    </div>
+    <div class="meta">PRIVATE BETA<br>SUPERVISED HEAD TRAINING</div>
+  </div>
+
+  <div class="kicker">FOUNDING BETA / 60 DAYS / 300 : 300 / LUCKY 10</div>
+  <h1>Train Medusa with the judgement only your industry experience can provide.</h1>
+  <p class="lead">Medusa Heads is not live yet. We are selecting the first 10 beta clients to help us test whether a knowledgeable person can train a Head using their own industry judgement while we supervise the journey, answer questions about the system and learn where the training path needs to improve.</p>
+
+
+  <div class="promise" style="margin-top:22px;border-color:rgba(242,161,74,.46);background:linear-gradient(135deg,rgba(242,161,74,.12),rgba(242,161,74,.04));">
+    <strong style="color:#f2a14a;letter-spacing:.08em">FOUNDING BETA / 60 DAYS / LUCKY 10</strong><br>
+    <span style="display:inline-block;margin-top:7px;font-size:20px;font-weight:900;color:#fff3e4">The first 10 accepted beta clients receive 50% off for the 60-day founding beta.</span><br>
+    <span style="display:inline-block;margin-top:7px;color:#b9aa98">The discounted 60-day beta rate is intended only to help cover compute and data costs while you train your Head and complete the 300 / 300 comparison.</span>
+    <div style="margin-top:12px">
+      <a href="pricing.html"
+         style="display:inline-block;color:#f2a14a;text-decoration:none;font-weight:900;letter-spacing:.04em;border-bottom:1px solid rgba(242,161,74,.55);padding-bottom:3px">
+        VIEW CURRENT MEDUSA PRICING →
+      </a>
+    </div>
+  </div>
+
+  <div class="promise"><strong>How the beta works:</strong> you do not need to become a Medusa expert, and we do not need to become experts in your industry. You bring the commercial knowledge; Medusa asks for the judgement behind it. We supervise the process so that if a question feels unclear, irrelevant or incomplete, we can learn from that and improve the training path.</div>
+
+  <div class="promise" style="margin-top:16px"><strong>What we are testing:</strong> can someone who knows their market train a useful Head without us knowing that market first? During the beta, we will supervise rather than lead. If Medusa asks the wrong question, misses an important branch, or makes you force your knowledge into the wrong box, tell us. That friction is part of what we want to learn.</div>
+  
+  <div class="promise" style="margin-top:18px">
+    <strong>What happens next:</strong> this is an application, not the start of live training. We use your answers to understand the judgement you would bring to Medusa and to select a varied first beta group. Accepted clients will be invited into supervised training when the beta opens.
+  </div>
+
+  
+  <div class="promise" style="margin-top:18px;border-color:rgba(242,161,74,.34);background:rgba(242,161,74,.045)">
+    <strong>How the beta is measured:</strong> the 60-day founding beta is a controlled <strong>300 / 300 comparison</strong>. You provide or generate 300 opportunities using your existing method. Medusa independently produces 300 opportunities against the same commercial objective and agreed criteria. Wherever practical, both groups then go through the same downstream process so we can compare fit, research effort, response, meetings, disqualifications and commercial outcomes fairly.
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-meta"><span id="progressLabel">0% complete</span><span>About 8–12 minutes</span></div>
+    <div class="progress"><span id="progressBar"></span></div>
+  </div>
+
+  <form id="betaForm" novalidate>
+    <section class="section">
+      <div class="section-head">
+        <div class="num">01 / ABOUT YOU</div>
+        <h2>Who is training this Head?</h2>
+        <p class="section-intro">Enough context to understand who is providing the judgement and the market they know.</p>
+      </div>
+      <div class="fields">
+        <div class="field"><label>Company name <span class="required">*</span></label><input name="company_name" type="text" required></div>
+        <div class="field"><label>Website <span class="required">*</span></label><input name="website" type="url" placeholder="https://" required></div>
+        <div class="field"><label>Your name <span class="required">*</span></label><input name="contact_name" type="text" required></div>
+        <div class="field"><label>Your role</label><input name="role" type="text"></div>
+        <div class="field"><label>Work email <span class="required">*</span></label><input name="email" type="email" required></div>
+        <div class="field"><label>Primary market / country</label><input name="primary_market" type="text" placeholder="e.g. UK, North America, Europe"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="num">02 / THE HUNT</div>
+        <h2>What are you trying to find?</h2>
+        <p class="section-intro">Start with the commercial objective, not the database fields.</p>
+      </div>
+      <div class="fields">
+        <div class="field full">
+          <label>In one sentence, what kind of organisation would be valuable to you? <span class="required">*</span></label>
+          <textarea name="valuable_organisation" required placeholder="Describe the kind of organisation you would genuinely want your team to spend time on."></textarea>
+        </div>
+        <div class="field full">
+          <div class="label">What are you looking for?</div>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="target_type" value="Customers"><span>Customers</span></label>
+            <label class="choice"><input type="checkbox" name="target_type" value="Dealers / distributors"><span>Dealers / distributors</span></label>
+            <label class="choice"><input type="checkbox" name="target_type" value="Partners"><span>Partners</span></label>
+            <label class="choice"><input type="checkbox" name="target_type" value="Suppliers"><span>Suppliers</span></label>
+            <label class="choice"><input type="checkbox" name="target_type" value="Investors"><span>Investors</span></label>
+            <label class="choice"><input type="checkbox" name="target_type" value="Acquisition targets"><span>Acquisition targets</span></label>
+            <label class="choice"><input type="checkbox" name="target_type" value="Applicants / talent"><span>Applicants / talent</span></label>
+            <label class="choice"><input type="checkbox" id="targetOther" name="target_type" value="Other"><span>Other</span></label>
+          </div>
+        </div>
+        <div class="field full conditional" id="targetOtherWrap">
+          <label>What else are you looking for?</label><input name="target_type_other" type="text">
+        </div>
+        <div class="field full">
+          <label>What are you hoping they will do? <span class="required">*</span></label>
+          <textarea name="desired_action" required placeholder="Buy, use, join, fund, distribute, supply, respond, introduce, apply…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="num">03 / JUDGEMENT</div>
+        <h2>What makes an opportunity worth pursuing?</h2>
+        <p class="section-intro">This is the heart of the training: your judgement about attraction, rejection and priority.</p>
+      </div>
+      <div class="fields">
+        <div class="field full">
+          <label>What characteristics make an organisation attractive? <span class="required">*</span></label>
+          <textarea name="positive_criteria" required placeholder="What makes you think: yes, this is worth our time?"></textarea>
+        </div>
+        <div class="field full">
+          <label>What would make you reject one immediately?</label>
+          <textarea name="reject_criteria" placeholder="Wrong size, location, market, business model, technology, risk, timing, existing relationship…"></textarea>
+        </div>
+        <div class="field full">
+          <div class="label">Which areas matter when judging fit?</div>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="fit_area" value="Company size"><span>Company size</span></label>
+            <label class="choice"><input type="checkbox" name="fit_area" value="Location"><span>Location</span></label>
+            <label class="choice"><input type="checkbox" name="fit_area" value="Industry / sector"><span>Industry / sector</span></label>
+            <label class="choice"><input type="checkbox" name="fit_area" value="Business model"><span>Business model</span></label>
+            <label class="choice"><input type="checkbox" name="fit_area" value="Technology"><span>Technology</span></label>
+            <label class="choice"><input type="checkbox" name="fit_area" value="Growth signals"><span>Growth signals</span></label>
+            <label class="choice"><input type="checkbox" name="fit_area" value="Buying / demand signals"><span>Buying / demand signals</span></label>
+            <label class="choice"><input type="checkbox" name="fit_area" value="Other"><span>Other</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>What is absolutely essential?</label>
+          <textarea name="must_have" placeholder="Criteria that must be true."></textarea>
+        </div>
+        <div class="field">
+          <label>What is desirable, but not essential?</label>
+          <textarea name="nice_to_have" placeholder="Signals that strengthen the case."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="num">04 / EVIDENCE</div>
+        <h2>What should convince Medusa?</h2>
+        <p class="section-intro">Teach Medusa which evidence signals an experienced person in your market would actually care about.</p>
+      </div>
+      <div class="fields">
+        <div class="field full">
+          <div class="label">What would convince you an organisation is genuinely worth pursuing?</div>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Recent growth or expansion"><span>Recent growth or expansion</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Hiring activity"><span>Hiring activity</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="New locations / facilities"><span>New locations / facilities</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="New products or services"><span>New products or services</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Funding / investment"><span>Funding / investment</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Leadership changes"><span>Leadership changes</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Technology currently used"><span>Technology currently used</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Existing suppliers / partners"><span>Existing suppliers / partners</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Contracts / tenders"><span>Contracts / tenders</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Regulatory / compliance triggers"><span>Regulatory / compliance triggers</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Website / digital signals"><span>Website / digital signals</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Financial indicators"><span>Financial indicators</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Public announcements / news"><span>Public announcements / news</span></label>
+            <label class="choice"><input type="checkbox" name="evidence_signal" value="Other"><span>Other</span></label>
+          </div>
+        </div>
+        <div class="field full">
+          <label>What evidence matters specifically in your market?</label>
+          <textarea name="market_evidence" placeholder="Tell us what an experienced person in your industry would notice that an outsider might miss."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="num">05 / PEOPLE</div>
+        <h2>Who matters inside the organisation?</h2>
+        <p class="section-intro">Optional. Use this only if people and buying context are part of how your industry judges an opportunity.</p>
+      </div>
+      <div class="fields">
+        <div class="field full">
+          <div class="label">Do you want Medusa to identify likely decision-makers?</div>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="need_people" value="Yes"><span>Yes</span></label>
+            <label class="choice"><input type="radio" name="need_people" value="No"><span>No</span></label>
+            <label class="choice"><input type="radio" name="need_people" value="Not sure"><span>Not sure yet</span></label>
+          </div>
+        </div>
+        <div class="field people-detail">
+          <label>Which roles or departments usually matter?</label>
+          <textarea name="roles_matter" placeholder="Job titles, functions or departments."></textarea>
+        </div>
+        <div class="field people-detail">
+          <label>Who usually influences the decision?</label>
+          <textarea name="influencers" placeholder="Anyone who shapes the decision without owning it."></textarea>
+        </div>
+        <div class="field people-detail">
+          <label>Any roles we should avoid?</label>
+          <textarea name="roles_avoid"></textarea>
+        </div>
+        <div class="field people-detail">
+          <label>Do you know the typical buying path?</label>
+          <textarea name="buying_path" placeholder="Who notices the need, who evaluates, who approves?"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="num">06 / AFTER THE FIND</div>
+        <h2>What happens when Medusa finds one?</h2>
+        <p class="section-intro">If you later choose to test live opportunities, this helps us understand what should happen after the Head has been trained.</p>
+      </div>
+      <div class="fields">
+
+
+        <div class="field full">
+          <div style="padding:18px;border:1px solid rgba(242,161,74,.34);background:rgba(242,161,74,.045)">
+            <div class="num">THE 300 / 300 TEST</div>
+            <div style="font-size:20px;font-weight:900;margin:8px 0 7px;color:#fff3e4">300 from your current method. 300 from Medusa.</div>
+            <div class="note" style="font-size:13px">Both groups should target the same objective and use the same agreed criteria. Where possible, they should be handled through the same sales or outreach process so differences in outcome can be attributed to the quality of the opportunity rather than to a different execution method.</div>
+          </div>
+        </div>
+
+
+        <div class="field full">
+          <div class="label">Can you provide or generate 300 opportunities using your current method during the 60-day beta? <span class="required">*</span></div>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="can_supply_300" value="Yes" required><span>Yes</span></label>
+            <label class="choice"><input type="radio" name="can_supply_300" value="Probably"><span>Probably — may need help defining the sample</span></label>
+            <label class="choice"><input type="radio" name="can_supply_300" value="No"><span>No</span></label>
+          </div>
+        </div>
+
+        <div class="field full">
+          <label>How do you currently find and qualify opportunities? <span class="required">*</span></label>
+          <textarea name="current_method" required placeholder="Describe your existing process: people, tools, searches, lists, referrals, databases, judgement steps or anything else you currently rely on."></textarea>
+        </div>
+        <div class="field">
+          <label>Roughly how much time does the current method take?</label>
+          <input name="current_method_time" type="text" placeholder="e.g. 6 hours a week, 2 days per campaign">
+        </div>
+        <div class="field">
+          <label>What does the current method do well?</label>
+          <textarea name="current_method_strengths" placeholder="What should Medusa have to beat or match?"></textarea>
+        </div>
+        <div class="field full">
+          <label>Where does the current method fall short?</label>
+          <textarea name="current_method_weaknesses" placeholder="Poor fit, too much manual research, missed opportunities, weak data, low response, inconsistent judgement…"></textarea>
+        </div>
+
+        <div class="field full">
+          <div class="label">What will you do with a qualified opportunity?</div>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="handoff_action" value="Email outreach"><span>Email outreach</span></label>
+            <label class="choice"><input type="checkbox" name="handoff_action" value="LinkedIn"><span>LinkedIn</span></label>
+            <label class="choice"><input type="checkbox" name="handoff_action" value="Call"><span>Call</span></label>
+            <label class="choice"><input type="checkbox" name="handoff_action" value="CRM handoff"><span>CRM handoff</span></label>
+            <label class="choice"><input type="checkbox" name="handoff_action" value="Sales team review"><span>Sales team review</span></label>
+            <label class="choice"><input type="checkbox" name="handoff_action" value="Partner introduction"><span>Partner introduction</span></label>
+            <label class="choice"><input type="checkbox" name="handoff_action" value="Manual research"><span>Manual research</span></label>
+            <label class="choice"><input type="checkbox" name="handoff_action" value="Other"><span>Other</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Which platform or system do you currently use?</label>
+          <input name="current_platform" type="text" placeholder="CRM, outreach, workflow, spreadsheet, none…">
+        </div>
+        <div class="field">
+          <label>How many opportunities could you realistically act on each month?</label>
+          <select name="monthly_capacity">
+            <option value="">Select a range</option>
+            <option>Under 25</option>
+            <option>25–50</option>
+            <option>51–100</option>
+            <option>101–250</option>
+            <option>251–500</option>
+            <option>500+</option>
+          </select>
+        </div>
+        <div class="field full">
+          <div class="label">What would make this beta successful?</div>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="success_metric" value="Better-fit opportunities"><span>Better-fit opportunities</span></label>
+            <label class="choice"><input type="checkbox" name="success_metric" value="Higher reply rate"><span>Higher reply rate</span></label>
+            <label class="choice"><input type="checkbox" name="success_metric" value="More meetings"><span>More meetings</span></label>
+            <label class="choice"><input type="checkbox" name="success_metric" value="Less research time"><span>Less research time</span></label>
+            <label class="choice"><input type="checkbox" name="success_metric" value="Better conversion"><span>Better conversion</span></label>
+            <label class="choice"><input type="checkbox" name="success_metric" value="Better partner / dealer recruitment"><span>Better partner / dealer recruitment</span></label>
+            <label class="choice"><input type="checkbox" name="success_metric" value="Higher-quality shortlist"><span>Higher-quality shortlist</span></label>
+            <label class="choice"><input type="checkbox" name="success_metric" value="Other"><span>Other</span></label>
+          </div>
+        </div>
+        <div class="field full">
+          <label>How would you rate the quality of your current targeting?</label>
+          <span class="help">1 = poor fit, 5 = consistently strong</span>
+          <div class="scale" style="margin-top:10px">
+            <label><input type="radio" name="current_targeting_score" value="1">1</label>
+            <label><input type="radio" name="current_targeting_score" value="2">2</label>
+            <label><input type="radio" name="current_targeting_score" value="3">3</label>
+            <label><input type="radio" name="current_targeting_score" value="4">4</label>
+            <label><input type="radio" name="current_targeting_score" value="5">5</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-question">
+      <div class="num">THE MOST IMPORTANT QUESTION</div>
+      <h2>If Medusa could learn one thing about what makes a good opportunity for your business, what should it learn first?</h2>
+      <textarea name="one_thing_to_learn" required placeholder="Write this exactly as you would explain it to a smart new researcher joining your team."></textarea>
+      <div style="margin-top:18px;padding:14px 16px;border:1px solid var(--line);background:#09131f">
+        <label class="choice" style="border:0;padding:0;background:transparent">
+          <input type="checkbox" name="parallel_test_acknowledgement" value="Agreed" required>
+          <span>I understand that the founding beta is designed as a 300 / 300 comparison: 300 opportunities from our existing method against 300 Medusa-qualified opportunities, using the same objective and comparable downstream treatment wherever practical.</span>
+        </label>
+      </div>
+
+      <div class="actions">
+        <div class="status" id="formStatus">Your answers help us select and prepare the founding beta group.</div>
+        <button class="btn primary" type="submit">APPLY FOR THE FOUNDING BETA →</button>
+      </div>
+    </section>
+  </form>
+
+  <div class="summary" id="summary">
+    <h3>Training brief captured.</h3>
+    <p class="note">No live form endpoint has been connected yet. The structured training brief is shown below for development/testing.</p>
+    <pre id="summaryJson"></pre>
+    <div class="actions">
+      <button class="btn" type="button" id="copyJson">COPY SUBMISSION JSON</button>
+      <button class="btn" type="button" id="downloadJson">DOWNLOAD JSON</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const FORM_ENDPOINT = ""; // Add production endpoint here.
+
+const form = document.getElementById("betaForm");
+const progressBar = document.getElementById("progressBar");
+const progressLabel = document.getElementById("progressLabel");
+const targetOther = document.getElementById("targetOther");
+const targetOtherWrap = document.getElementById("targetOtherWrap");
+const summary = document.getElementById("summary");
+const summaryJson = document.getElementById("summaryJson");
+const formStatus = document.getElementById("formStatus");
+
+function updateConditionals(){
+  targetOtherWrap.classList.toggle("show", targetOther.checked);
+  const people = new FormData(form).get("need_people");
+  document.querySelectorAll(".people-detail").forEach(el=>{
+    el.style.display = people === "No" ? "none" : "block";
+  });
+}
+function updateProgress(){
+  const important = [...form.querySelectorAll("input[required],textarea[required]")];
+  let filled = important.filter(el => String(el.value || "").trim()).length;
+  const optionalGroups = ["target_type","fit_area","evidence_signal","need_people","handoff_action","success_metric","monthly_capacity","current_targeting_score"];
+  let groupFilled = 0;
+  optionalGroups.forEach(name=>{
+    const vals = new FormData(form).getAll(name);
+    if(vals.some(v=>String(v).trim())) groupFilled++;
+  });
+  const total = important.length + optionalGroups.length;
+  const pct = Math.round(((filled + groupFilled)/total)*100);
+  progressBar.style.width = Math.min(100,pct) + "%";
+  progressLabel.textContent = Math.min(100,pct) + "% complete";
+}
+form.addEventListener("input",()=>{updateConditionals();updateProgress();});
+form.addEventListener("change",()=>{updateConditionals();updateProgress();});
+
+function serializeForm(){
+  const fd = new FormData(form);
+  const out = {};
+  for(const [k,v] of fd.entries()){
+    if(out[k] === undefined) out[k] = v;
+    else if(Array.isArray(out[k])) out[k].push(v);
+    else out[k] = [out[k],v];
+  }
+  return {
+    submitted_at:new Date().toISOString(),
+    form_version:"MH-FOUNDING-BETA-APPLICATION-2026-10-v2",
+    ...out
+  };
+}
+
+form.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  if(!form.reportValidity()) return;
+  const payload = serializeForm();
+
+  if(FORM_ENDPOINT){
+    try{
+      formStatus.textContent = "Submitting…";
+      const r = await fetch(FORM_ENDPOINT,{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(payload)
+      });
+      if(!r.ok) throw new Error("Submission failed");
+      formStatus.textContent = "Submitted. Thank you.";
+      summary.classList.remove("show");
+      return;
+    }catch(err){
+      formStatus.textContent = "Could not submit. Your answers remain on this page.";
+    }
+  }
+
+  summaryJson.textContent = JSON.stringify(payload,null,2);
+  summary.classList.add("show");
+  summary.scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+document.getElementById("copyJson").addEventListener("click", async ()=>{
+  await navigator.clipboard.writeText(summaryJson.textContent);
+  document.getElementById("copyJson").textContent = "COPIED";
+  setTimeout(()=>document.getElementById("copyJson").textContent="COPY SUBMISSION JSON",1200);
+});
+document.getElementById("downloadJson").addEventListener("click",()=>{
+  const blob = new Blob([summaryJson.textContent],{type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "medusa-beta-brief.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+updateConditionals();
+updateProgress();
+</script>
+<footer class="site-footer">
+<div class="sf-inner">
+<div class="sf-brand"><img class="sf-logo" src="assets/logo.svg" alt=""><div class="sf-name">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></div>
+<p class="sf-tag"><b>Multi-Eyed Digital Understanding Scanner for Acquisition.</b> Describe the opportunity you want. Medusa interprets it, you verify the Head, and nothing runs until you approve it.</p>
+<div class="sf-rule">MEDUSA INTERPRETS. YOU VERIFY.</div></div>
+<div class="sf-col"><h4>PRODUCT</h4><a href="index.html">Build a Head</a><a href="medusa-heads-page-10-my-heads.html">My Heads</a><a href="pricing.html">Pricing</a><a href="pricing.html#cerberus-box">Cerberus verification</a><a href="founding-beta.html" aria-current="page">Founding beta</a></div>
+<div class="sf-col"><h4>THE FLOW</h4><div class="sf-flow"><a href="index.html"><b>01</b><span>What are you seeking?</span></a><a href="medusa-heads-page-02-medusa-understands-v2.html"><b>02</b><span>Medusa understands</span></a><a href="medusa-heads-page-03-configure-your-head.html"><b>03</b><span>Configure your Head</span></a><a href="medusa-heads-page-04-can-medusa-see-it.html"><b>04</b><span>Can Medusa see it?</span></a><a href="medusa-heads-page-05-release-the-head.html"><b>05</b><span>Release the Head</span></a><a href="medusa-heads-page-06-hunt-results-v2.html"><b>06</b><span>Hunt results</span></a><a href="medusa-heads-page-07-pass-on-your-judgement.html"><b>07</b><span>Pass on your judgement</span></a><a href="medusa-heads-page-08-the-head-is-ready.html"><b>08</b><span>The Head is ready</span></a><a href="medusa-heads-page-09-choose-your-hunt.html"><b>09</b><span>Choose your hunt</span></a><a href="medusa-heads-page-10-my-heads.html"><b>10</b><span>My Heads</span></a></div></div>
+<div class="sf-col"><h4>COMPANY</h4><a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+</div>
+<div class="sf-bottom"><div><span>© 2026 MEDUSA HEADS · ALL PRICES EXCLUDE VAT WHERE APPLICABLE</span><span><b>MANY EYES · ONE PURPOSE</b></span></div></div>
+</footer>
+<script src="assets/site.js" defer></script>
+</body>
+</html>
