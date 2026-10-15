@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medusa Heads | Research Cost Calculator</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+:root{color-scheme:dark;--night:#070b12;--deep:#0b111b;--ink:#f1eee7;--muted:#8f938f;--bronze:#b79a63;--bronze2:#6f5b39;--cyan:#79d7e8;--line:#292a28;--accent:#b79a63}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 20%,rgba(183,154,99,.08),transparent 28%),var(--night);color:var(--ink);font:400 15px/1.65 Inter,sans-serif}.wrap{max-width:1260px;margin:auto;padding:75px 5vw 95px}
+.eyebrow{font:500 9px 'IBM Plex Mono',monospace;letter-spacing:.22em;color:var(--bronze);text-transform:uppercase;margin-bottom:18px}
+.title{font:500 clamp(42px,5.2vw,73px)/.96 'Cormorant Garamond',serif;letter-spacing:-.035em;text-transform:uppercase;margin:0 0 24px;max-width:850px}.lead{max-width:680px;color:#aeb0aa;font-size:15px;line-height:1.75;margin:0 0 36px}
+.calculator{border-top:1px solid #34312a;border-bottom:1px solid #34312a;padding:25px 0 35px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.price-card{border:1px solid var(--line);background:linear-gradient(145deg,#0d131c,#080c12);padding:26px;min-height:185px}.price-card.medusa{border-color:var(--bronze2);background:linear-gradient(120deg,rgba(183,154,99,.07),#0b111b)}
+.card-label{font:500 9px 'IBM Plex Mono',monospace;color:#8b8b80;letter-spacing:.16em}.medusa .card-label{color:var(--bronze)}
+.amount{font:500 clamp(38px,4.5vw,58px)/1.05 'Cormorant Garamond',serif;color:var(--ink);font-variant-numeric:tabular-nums;margin:18px 0 9px}.medusa .amount{color:#e9d7b4}.detail{color:#93968f;font-size:12px;line-height:1.6}
+.pill{display:inline-block;border:1px solid var(--bronze2);padding:5px 8px;margin-top:12px;font:400 8px 'IBM Plex Mono',monospace;letter-spacing:.09em;color:var(--bronze)}
+.savings{text-align:center;padding:33px 15px;border-bottom:1px solid #252722}.percent{font:500 clamp(44px,6vw,76px)/1 'Cormorant Garamond',serif;color:var(--bronze);font-variant-numeric:tabular-nums}.savings small{display:block;margin-top:12px;font:400 10px 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#959891}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;padding:35px 0 30px}.control.wide{grid-column:1/-1}.control-header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:8px}.control-header label,.control-header .lbl{font:500 11px 'IBM Plex Mono',monospace;color:#d2d0c9;letter-spacing:.02em}.control-header output{font:500 13px 'IBM Plex Mono',monospace;color:var(--bronze);white-space:nowrap;font-variant-numeric:tabular-nums}input[type=range]{width:100%;accent-color:var(--bronze);cursor:pointer;touch-action:pan-y;min-height:30px}input[type=range]:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}.range-labels{display:flex;justify-content:space-between;font:400 9px 'IBM Plex Mono',monospace;color:#74766f}
+.seg{display:flex;border:1px solid var(--line);background:var(--deep);margin:0;padding:0}.seg legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.seg input{position:absolute;opacity:0;pointer-events:none}.seg label{flex:1;text-align:center;padding:11px 8px;font:500 11px 'IBM Plex Mono',monospace;color:#9a9c95;cursor:pointer;border-right:1px solid var(--line);transition:background .15s,color .15s}.seg label:last-of-type{border-right:0}.seg input:checked+label{background:rgba(183,154,99,.16);color:var(--bronze)}.seg input:focus-visible+label{outline:2px solid var(--cyan);outline-offset:-2px}.seg.off{opacity:.4}.seg.off label{cursor:not-allowed}
+.mini{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.mini>div{border:1px solid var(--line);background:var(--deep);padding:20px 24px}.mini strong{display:block;font:500 9px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#91948d;text-transform:uppercase}.mini .number{font:500 34px 'Cormorant Garamond',serif;margin-top:9px;font-variant-numeric:tabular-nums}.mini .hours .number{color:#e9d7b4}
+.summary{border:1px solid var(--bronze2);background:linear-gradient(90deg,rgba(183,154,99,.09),#0b111b);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}.summary .label{font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.07em;color:#b9af9a}.summary .number{font:500 clamp(35px,4vw,53px) 'Cormorant Garamond',serif;color:var(--bronze);font-variant-numeric:tabular-nums}
+.fineprint{margin:19px 0 0;color:#777a75;font:400 10px/1.75 'IBM Plex Mono',monospace;letter-spacing:.01em}
+@media(max-width:680px){.wrap{padding:45px 20px 65px}.cards,.controls,.mini{grid-template-columns:1fr}.control.wide{grid-column:auto}.price-card{min-height:0}.summary{align-items:flex-start;flex-direction:column}.controls{gap:20px}.calculator{padding-top:20px}}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site-nav">
+<div class="sn-inner">
+<a class="sn-brand" href="index.html" aria-label="Medusa Heads home"><img class="sn-logo" src="assets/logo.svg" alt=""><span class="sn-name">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></span></a>
+<nav class="sn-links" id="sn-links" aria-label="Site">
+<a href="index.html">BUILD A HEAD</a>
+<div class="sn-drop"><button class="sn-dropbtn" type="button" aria-expanded="false" aria-controls="sn-flow">THE FLOW <span class="sn-caret">▾</span></button>
+<div class="sn-menu" id="sn-flow"><a href="index.html"><b>01</b> What are you seeking?</a><a href="medusa-heads-page-02-medusa-understands-v2.html"><b>02</b> Medusa understands</a><a href="medusa-heads-page-03-configure-your-head.html"><b>03</b> Configure your Head</a><a href="medusa-heads-page-04-can-medusa-see-it.html"><b>04</b> Can Medusa see it?</a><a href="medusa-heads-page-05-release-the-head.html"><b>05</b> Release the Head</a><a href="medusa-heads-page-06-hunt-results-v2.html"><b>06</b> Hunt results</a><a href="medusa-heads-page-07-pass-on-your-judgement.html"><b>07</b> Pass on your judgement</a><a href="medusa-heads-page-08-the-head-is-ready.html"><b>08</b> The Head is ready</a><a href="medusa-heads-page-09-choose-your-hunt.html"><b>09</b> Choose your hunt</a><a href="medusa-heads-page-10-my-heads.html"><b>10</b> My Heads</a></div></div>
+<a href="medusa-heads-page-10-my-heads.html">MY HEADS</a>
+<a href="pricing.html">PRICING</a>
+<a href="cost-calculator.html" aria-current="page">COST CALCULATOR</a>
+<a href="founding-beta.html">FOUNDING BETA</a>
+<a class="sn-mobile-cta" href="pricing.html">VIEW PRICING →</a>
+</nav>
+<div class="sn-right"><span class="sn-step">COST CALCULATOR <b>/ ESTIMATE</b></span><a class="sn-cta" href="pricing.html">VIEW PRICING →</a><button class="sn-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sn-links"><span></span><span></span><span></span></button></div>
+</div>
+</header>
+<main class="wrap"><div class="eyebrow">MEDUSA HEADS / CERBERUS</div><h1 class="title">The Real Cost of Researching a Lead</h1><p class="lead">Compare manual company research with Medusa Heads and the optional Cerberus, Cerberus Pack and Gate verification. Adjust the assumptions to match your team's costs.</p>
+<section class="calculator" aria-label="Interactive research cost comparison">
+<div class="cards"><article class="price-card"><div class="card-label">MANUAL RESEARCH</div><div class="amount" id="manualCost">£8.33</div><div class="detail">Cost per opportunity</div><div class="detail" id="manualDescription">20 minutes of staff time</div></article><article class="price-card medusa"><div class="card-label" id="mhLabel">MEDUSA + CERBERUS</div><div class="amount" id="mhCost">£2.00</div><div class="detail">Cost per opportunity</div><div class="detail" id="mhDescription">Research plus people verification</div><span class="pill">Illustrative package price</span></article></div>
+<div class="savings" aria-live="polite"><div class="percent" id="savingsPercent">76% less</div><small>Estimated cost reduction per researched opportunity</small></div>
+<div class="controls">
+<div class="control"><div class="control-header"><label for="minutes">Manual research time</label><output id="minutesVal" for="minutes">20 min</output></div><input id="minutes" type="range" min="10" max="90" step="5" value="20"><div class="range-labels"><span>10 min</span><span>90 min</span></div><div class="range-labels" style="margin-top:6px;color:#8b8b80"><span>Pack-depth checks (financials, credit, directors) usually take longer by hand. Set the time to match.</span></div></div>
+<div class="control"><div class="control-header"><label for="hourly">Fully loaded hourly cost</label><output id="hourlyVal" for="hourly">£25 / hr</output></div><input id="hourly" type="range" min="15" max="75" step="1" value="25"><div class="range-labels"><span>£15</span><span>£75</span></div></div>
+<div class="control"><div class="control-header"><span class="lbl" id="huntLbl">Medusa research per Coin</span><output id="huntVal">£1.50</output></div><fieldset class="seg" id="huntSeg" aria-labelledby="huntLbl"><legend>Medusa research price</legend><input type="radio" name="hunt" id="hunt15" value="1.5" checked><label for="hunt15">Starter £1.50</label><input type="radio" name="hunt" id="hunt125" value="1.25"><label for="hunt125">Growth £1.25</label><input type="radio" name="hunt" id="hunt1" value="1"><label for="hunt1">Scale £1.00</label></fieldset></div>
+<div class="control"><div class="control-header"><span class="lbl" id="cerbLbl">Verification</span><output id="cerberusVal">£0.50</output></div><fieldset class="seg" id="cerbSeg" aria-labelledby="cerbLbl"><legend>Cerberus verification</legend><input type="radio" name="cerberus" id="cerb0" value="0"><label for="cerb0">Premium only</label><input type="radio" name="cerberus" id="cerb1" value="0.5" checked><label for="cerb1">Cerberus £0.50</label><input type="radio" name="cerberus" id="cerb5" value="2.5"><label for="cerb5">Pack £2.50</label></fieldset></div>
+<div class="control"><div class="control-header"><span class="lbl" id="gateLbl">Gate upgrade</span><output id="gateVal">Off</output></div><fieldset class="seg" id="gateSeg" aria-labelledby="gateLbl"><legend>Gate upgrade</legend><input type="radio" name="gate" id="gate0" value="0" checked><label for="gate0">Off</label><input type="radio" name="gate" id="gate1" value="1.25"><label for="gate1">On · +£1.25</label></fieldset></div>
+<div class="control wide"><div class="control-header"><label for="quantity">Opportunities to research</label><output id="quantityVal" for="quantity">300</output></div><input id="quantity" type="range" min="25" max="1000" step="25" value="300"><div class="range-labels"><span>25</span><span>1,000</span></div></div>
+</div>
+<div class="mini"><div><strong>Manual research total</strong><div class="number" id="manualTotal">£2,500</div></div><div><strong>Medusa total</strong><div class="number" id="medusaTotal">£600</div></div><div class="hours"><strong>Staff time saved</strong><div class="number" id="hoursSaved">100 hrs</div></div></div>
+<div class="summary" style="margin-top:14px"><div class="label" id="savingLabel">Estimated savings across 300 opportunities</div><div class="number" id="totalSavings">£1,900</div></div>
+<p class="fineprint">Illustrative comparison only. Manual cost is calculated from the selected research time and hourly cost, not observed time savings. Research is priced per Coin at Purse rates (Starter £1.50, Growth £1.25, Scale £1.00); Coins included in a subscription vary by plan. Cerberus is £0.50 and Cerberus Pack £2.50 per delivered Coin; Gate adds £1.25 per selected Pack-checked opportunity. Prices are illustrative until confirmed at launch. Output quality, provider coverage, turnaround times and additional data charges vary. Not every company will qualify as a sales opportunity. All prices shown exclude VAT, where applicable.</p>
+</section>
+</main>
+<script>
+(()=>{const $=id=>document.getElementById(id);const val=n=>+document.querySelector('input[name="'+n+'"]:checked').value;const money=(n,dp=0)=>new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',minimumFractionDigits:dp,maximumFractionDigits:dp}).format(n);const number=n=>new Intl.NumberFormat('en-GB').format(n);
+function update(){const minutes=+$('minutes').value,hourly=+$('hourly').value,hunt=val('hunt'),cerberus=val('cerberus'),qty=+$('quantity').value;const gateOn=cerberus>=2.5;
+document.querySelectorAll('input[name="gate"]').forEach(i=>i.disabled=!gateOn);$('gateSeg').classList.toggle('off',!gateOn);const gate=gateOn?val('gate'):0;
+const manual=minutes/60*hourly,mh=hunt+cerberus+gate,diff=manual-mh,pct=manual>0?diff/manual*100:0,hours=Math.round(qty*minutes/60);
+$('manualCost').textContent=money(manual,2);$('mhCost').textContent=money(mh,2);$('manualDescription').textContent=minutes+' minutes of staff time';
+$('mhLabel').textContent=cerberus>=2.5?(gate>0?'MEDUSA + CERBERUS PACK + GATE':'MEDUSA + CERBERUS PACK'):(cerberus>0?'MEDUSA + CERBERUS':'MEDUSA RESEARCH');
+$('mhDescription').textContent=cerberus>=2.5?'Research, people and full commercial verification':(cerberus>0?'Research plus people verification':'Premium company verification, scored against your Head');
+$('minutesVal').textContent=minutes+' min';$('hourlyVal').textContent=money(hourly)+' / hr';$('huntVal').textContent=money(hunt,2);$('cerberusVal').textContent=cerberus===0?'Included':money(cerberus,2);
+$('gateVal').textContent=!gateOn?'Requires Pack':(gate===0?'Off':'+£1.25');$('quantityVal').textContent=number(qty);
+$('manualTotal').textContent=money(manual*qty);$('medusaTotal').textContent=money(mh*qty);$('hoursSaved').textContent=number(hours)+' hrs';
+$('totalSavings').textContent=(diff<0?'−':'')+money(Math.abs(diff*qty));$('savingLabel').textContent=(diff>=0?'Estimated savings':'Estimated additional cost')+' across '+number(qty)+' opportunities';
+$('savingsPercent').textContent=(pct>=0?Math.round(pct)+'% less':Math.round(-pct)+'% more');$('savingsPercent').style.color=pct>=0?'var(--bronze)':'#e2a385';}
+document.querySelectorAll('input').forEach(i=>i.addEventListener('input',update));document.querySelectorAll('input').forEach(i=>i.addEventListener('change',update));update()})();
+</script>
+<footer class="site-footer">
+<div class="sf-inner">
+<div class="sf-brand"><img class="sf-logo" src="assets/logo.svg" alt=""><div class="sf-name">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></div>
+<p class="sf-tag"><b>Multi-Eyed Digital Understanding Scanner for Acquisition.</b> Describe the opportunity you want. Medusa interprets it, you verify the Head, and nothing runs until you approve it.</p>
+<div class="sf-rule">MEDUSA INTERPRETS. YOU VERIFY.</div></div>
+<div class="sf-col"><h4>PRODUCT</h4><a href="index.html">Build a Head</a><a href="medusa-heads-page-10-my-heads.html">My Heads</a><a href="pricing.html">Pricing</a><a href="cost-calculator.html" aria-current="page">Cost calculator</a><a href="pricing.html#cerberus-box">Cerberus verification</a><a href="founding-beta.html">Founding beta</a></div>
+<div class="sf-col"><h4>THE FLOW</h4><div class="sf-flow"><a href="index.html"><b>01</b><span>What are you seeking?</span></a><a href="medusa-heads-page-02-medusa-understands-v2.html"><b>02</b><span>Medusa understands</span></a><a href="medusa-heads-page-03-configure-your-head.html"><b>03</b><span>Configure your Head</span></a><a href="medusa-heads-page-04-can-medusa-see-it.html"><b>04</b><span>Can Medusa see it?</span></a><a href="medusa-heads-page-05-release-the-head.html"><b>05</b><span>Release the Head</span></a><a href="medusa-heads-page-06-hunt-results-v2.html"><b>06</b><span>Hunt results</span></a><a href="medusa-heads-page-07-pass-on-your-judgement.html"><b>07</b><span>Pass on your judgement</span></a><a href="medusa-heads-page-08-the-head-is-ready.html"><b>08</b><span>The Head is ready</span></a><a href="medusa-heads-page-09-choose-your-hunt.html"><b>09</b><span>Choose your hunt</span></a><a href="medusa-heads-page-10-my-heads.html"><b>10</b><span>My Heads</span></a></div></div>
+<div class="sf-col"><h4>COMPANY</h4><a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+</div>
+<div class="sf-bottom"><div><span>© 2026 MEDUSA HEADS · ALL PRICES EXCLUDE VAT WHERE APPLICABLE</span><span><b>MANY EYES · ONE PURPOSE</b></span></div></div>
+</footer>
+<script src="assets/site.js" defer></script>
+</body></html>
