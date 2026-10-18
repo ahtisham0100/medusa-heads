@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Intelligence levels — Medusa Heads</title>
+<meta name="description" content="What each Medusa Heads intelligence level adds, what it costs, and the question it answers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+:root{--night:#070b12;--deep:#0b111b;--ink:#f1eee7;--muted:#8f938f;
+  --bronze:#b79a63;--bronze2:#6f5b39;--cyan:#79d7e8;--line:#292a28;--hair:#24241f}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:Inter,sans-serif;--cols:4;
+  background:radial-gradient(circle at 80% 20%,rgba(183,154,99,.08),transparent 28%),var(--night)}
+main{max-width:1460px;margin:auto;padding:70px 5vw 90px}
+
+h1,h2{font-family:"Cormorant Garamond",serif;font-weight:500;text-transform:uppercase;letter-spacing:-.035em}
+h1{font-size:clamp(48px,5.6vw,86px);line-height:.82;margin:0 0 26px}
+.k{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.22em;margin-bottom:20px}
+.lead{max-width:640px;color:#aeb0aa;font-size:16px;line-height:1.75;margin:0}
+.rule{margin-top:20px;font:400 9px IBM Plex Mono;color:#666a67;letter-spacing:.12em;text-transform:uppercase}
+
+/* ---- the ladder ---- */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:48px 0 0}
+.card{border:1px solid var(--line);background:linear-gradient(145deg,#0d131c,#080c12);
+  padding:26px 22px;display:flex;flex-direction:column;min-height:330px;position:relative}
+.card.featured{border-color:var(--bronze)}
+.tag{font:500 8px IBM Plex Mono;color:#6f726c;letter-spacing:.16em;text-transform:uppercase}
+.card.featured .tag{color:var(--bronze)}
+.card h3{font:600 33px "Cormorant Garamond";letter-spacing:.04em;margin:18px 0 0;text-transform:uppercase}
+.price{margin:22px 0 6px;display:flex;align-items:baseline;gap:9px}
+.price b{font:500 42px "Cormorant Garamond";font-weight:500}
+.price span{font:400 9px IBM Plex Mono;color:#777a75;letter-spacing:.14em;text-transform:uppercase}
+.gold{font:400 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.1em;text-transform:uppercase}
+.answers{margin:20px 0 0;padding-top:16px;border-top:1px solid #252722;
+  color:var(--ink);font-size:14px;line-height:1.5}
+.who{margin:9px 0 0;color:#8f938f;font-size:12.5px;line-height:1.55}
+
+/* ---- the matrix ---- */
+.sec{margin-top:74px;padding-top:40px;border-top:1px solid var(--hair)}
+.key{display:flex;gap:26px;flex-wrap:wrap;margin:22px 0 10px;
+  font:400 9px IBM Plex Mono;color:#777a75;letter-spacing:.14em;text-transform:uppercase}
+.key b{font-weight:400;margin-right:7px}
+table{width:100%;border-collapse:collapse}
+caption{text-align:left;font:500 9px IBM Plex Mono;color:var(--bronze);
+  letter-spacing:.22em;text-transform:uppercase;padding-bottom:16px}
+thead th{position:sticky;top:var(--sn-h);z-index:2;background:var(--night);
+  font:500 9px IBM Plex Mono;letter-spacing:.16em;text-transform:uppercase;color:#9ea19c;
+  text-align:center;padding:16px 8px;border-bottom:1px solid var(--line);font-weight:500}
+thead th:first-child{text-align:left;min-width:230px}
+thead th i{display:block;font-style:normal;color:#74766f;font-size:8px;
+  letter-spacing:.12em;margin-top:6px}
+thead th.rec{color:var(--bronze)}
+thead th.rec i{color:var(--bronze2)}
+tbody th{text-align:left;font-weight:400;font-size:13px;color:#969993;
+  padding:10px 16px 10px 0;border-top:1px solid #252722}
+tbody td{text-align:center;padding:10px 8px;border-top:1px solid #252722;
+  font:400 13px IBM Plex Mono}
+tbody tr:hover th,tbody tr:hover td{background:rgba(183,154,99,.035)}
+.g th{font:500 9px IBM Plex Mono;color:var(--bronze);letter-spacing:.2em;
+  text-transform:uppercase;padding:30px 0 10px;border-top:1px solid var(--line)}
+.on{color:var(--ink)} .add{color:var(--bronze)} .off{color:#34362f}
+tfoot th{text-align:left;font:500 9px IBM Plex Mono;color:#777a75;letter-spacing:.16em;
+  text-transform:uppercase;padding:22px 16px 22px 0;border-top:1px solid var(--bronze2)}
+tfoot td{text-align:center;padding:22px 8px;border-top:1px solid var(--bronze2);
+  font:500 26px "Cormorant Garamond";color:var(--ink)}
+tfoot td i{display:block;font:400 8px IBM Plex Mono;font-style:normal;color:#74766f;
+  letter-spacing:.14em;text-transform:uppercase;margin-top:7px}
+
+.note{margin-top:34px;padding-left:20px;border-left:1px solid var(--bronze2);
+  color:#8f938f;font-size:13px;line-height:1.7;max-width:70ch}
+
+@media(max-width:1080px){.ladder{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){
+  main{padding:44px 5vw 70px}
+  .ladder{grid-template-columns:1fr}
+  .card{min-height:0}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{min-width:640px}
+  thead th:first-child{min-width:190px}
+}
+</style>
+<style id="medusa-shared-design-system">
+/* MEDUSA DESIGN SYSTEM — homepage reference, 2026-10-18 */
+:root{
+ --bg:#11191d; --night:#11191d; --deep:#192329; --panel:#192329; --panel2:#202b30;
+ --ink:#f7f3eb; --text:#f7f3eb; --muted:#b8c1c2; --line:#344047;
+ --gold:#f2a766; --bronze:#f2a766; --bronze2:#936849;
+ --copper:#f2a766; --copper2:#ffc28f; --cyan:#f2a766; --cyan2:#ffc28f;
+ --hair:#344047; --line2:rgba(242,167,102,.30);
+}
+html{color-scheme:dark}
+body{background:#11191d!important;color:#f7f3eb;font-family:Arial,Helvetica,sans-serif!important}
+h1,h2{font-family:Georgia,'Times New Roman',serif!important;font-weight:normal!important;line-height:1.04;letter-spacing:-1.5px}
+h3,h4{font-family:Georgia,'Times New Roman',serif}
+button,input,textarea,select{font-family:Arial,Helvetica,sans-serif}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #f2a766;outline-offset:3px}
+
+body{--cols:4}
+.card{background:linear-gradient(145deg,#192329,#11191d);border-color:#344047}
+.card.featured{border-color:#f2a766}
+.card h3,.price b,tfoot td{font-family:Georgia,'Times New Roman',serif!important}
+.k,.rule,.tag,.gold,.key,caption,thead th,thead th i,tbody td,.g th,tfoot th,tfoot td i{font-family:Arial,Helvetica,sans-serif!important}
+.lead,.who,.note{color:#b8c1c2}
+.on{color:#f7f3eb}.add{color:#f2a766}.off{color:#647076}
+thead th{background:#11191d}tbody tr:hover th,tbody tr:hover td{background:rgba(242,167,102,.04)}
+</style>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site-nav">
+<div class="sn-inner">
+<a class="sn-brand" href="index.html" aria-label="Medusa Heads home"><img class="sn-logo" src="assets/logo.svg" alt=""><span class="sn-name">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></span></a>
+<nav class="sn-links" id="sn-links" aria-label="Site">
+<a href="index.html">BUILD A HEAD</a>
+<div class="sn-drop"><button class="sn-dropbtn" type="button" aria-expanded="false" aria-controls="sn-flow">THE FLOW <span class="sn-caret">▾</span></button>
+<div class="sn-menu" id="sn-flow"><a href="index.html"><b>01</b> What are you seeking?</a><a href="medusa-heads-page-02-medusa-understands-v2.html"><b>02</b> Medusa understands</a><a href="medusa-heads-page-03-configure-your-head.html"><b>03</b> Configure your Head</a><a href="medusa-heads-page-04-can-medusa-see-it.html"><b>04</b> Can Medusa see it?</a><a href="medusa-heads-page-05-release-the-head.html"><b>05</b> Release the Head</a><a href="medusa-heads-page-06-hunt-results-v2.html"><b>06</b> Hunt results</a><a href="medusa-heads-page-07-pass-on-your-judgement.html"><b>07</b> Pass on your judgement</a><a href="medusa-heads-page-08-the-head-is-ready.html"><b>08</b> The Head is ready</a><a href="medusa-heads-page-09-choose-your-hunt.html"><b>09</b> Choose your hunt</a><a href="medusa-heads-page-10-my-heads.html"><b>10</b> My Heads</a></div></div>
+<div class="sn-drop"><button class="sn-dropbtn" type="button" aria-expanded="false" aria-controls="sn-explore">EXPLORE <span class="sn-caret">▾</span></button>
+<div class="sn-menu" id="sn-explore"><a href="homepage.html">Overview</a><a href="build-your-head.html">Build your Head</a><a href="review-your-head.html">Review your Head</a><a href="intelligence-levels.html" aria-current="page">Intelligence levels</a><a href="my-challenges.html">My Challenges &amp; Results</a></div></div>
+<a href="medusa-heads-page-10-my-heads.html">MY HEADS</a>
+<a href="pricing.html">PRICING</a>
+<a href="cost-calculator.html">COST CALCULATOR</a>
+<a href="founding-beta.html">FOUNDING BETA</a>
+<a class="sn-mobile-cta" href="pricing.html">VIEW PRICING →</a>
+</nav>
+<div class="sn-right"><span class="sn-step">INTELLIGENCE <b>/ LEVELS</b></span><a class="sn-cta" href="pricing.html">VIEW PRICING →</a><button class="sn-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sn-links"><span></span><span></span><span></span></button></div>
+</div>
+</header>
+<main>
+
+  <p class="k">Medusa Heads &middot; Intelligence levels</p>
+  <h1>Pay for the depth<br>you need.</h1>
+  <p class="lead">Each level builds on the one before it. Qualify a list cheaply, then go
+     deeper only on the companies worth it.</p>
+  <p class="rule">1 Coin = £0.50 · charges per qualifying delivered company · each upgrade adds to the previous level</p>
+
+  <section class="ladder">
+      <article class="card">
+        <span class="tag">Level 01</span>
+        <h3>Standard</h3>
+        <div class="price"><b>&pound;0.50</b>
+          <span>to start</span></div>
+        <div class="gold">1 Coin = £0.50 · Total £0.50</div>
+        <p class="answers">Is this company worth approaching at all?</p>
+        <p class="who">Qualifying a list before anyone spends time on it.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Level 02</span>
+        <h3>Enriched</h3>
+        <div class="price"><b>&pound;0.50</b>
+          <span>added</span></div>
+        <div class="gold">1 + 1 = 2 Coins · Total £1.00</div>
+        <p class="answers">Who do I contact, and are they growing?</p>
+        <p class="who">Getting a named person and a reason to call now.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Level 03</span>
+        <h3>Cerberus</h3>
+        <div class="price"><b>&pound;0.50</b>
+          <span>added</span></div>
+        <div class="gold">2 + 1 = 3 Coins · Total £1.50</div>
+        <p class="answers">Are they real, solvent and legally clean?</p>
+        <p class="who">Checks before you commit time, credit or contract.</p>
+      </article>
+      <article class="card featured">
+        <span class="tag">Most chosen</span>
+        <h3>Pack</h3>
+        <div class="price"><b>&pound;2.50</b>
+          <span>added</span></div>
+        <div class="gold">3 + 5 = 8 Coins · Total £4.00</div>
+        <p class="answers">What is the full picture, in writing?</p>
+        <p class="who">A researched assessment you can act on or forward.</p>
+      </article>
+  </section>
+
+  <section class="sec">
+  <div class="key">
+    <span><b>&check;</b> Included</span>
+    <span><b>+</b> Added at this level</span>
+    <span><b>&mdash;</b> Not included</span>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <caption>Full breakdown</caption>
+      <thead><tr><th>Intelligence / data</th><th class="">Standard<i>&pound;0.50</i></th><th class="">Enriched<i>+&pound;0.50</i></th><th class="">Cerberus<i>+&pound;0.50</i></th><th class="rec">Pack<i>+&pound;2.50</i></th></tr></thead>
+      <tbody>
+        <tr class="g"><th colspan="5">Company discovery</th></tr>
+        <tr><th>Company name</th><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Website URL</th><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Company description</th><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Industry / sector</th><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Business location</th><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Head suitability score</th><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Basic qualification evidence</th><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr class="g"><th colspan="5">People and growth</th></tr>
+        <tr><th>Employee count estimate</th><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Decision-maker names</th><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Decision-maker roles</th><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Business email discovery</th><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Email verification status</th><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Hiring activity</th><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr><th>Workforce growth signals</th><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td><td class="on">&check;</td></tr>
+        <tr class="g"><th colspan="5">Official verification</th></tr>
+        <tr><th>Legal company identity</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>Company registration number</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>Company age / incorporation</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>Active / dissolved status</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>Directors / officers</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>PSC ownership information</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>Filing compliance</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>VAT validation (where permitted)</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>Insolvency records</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>Registered charges</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>Sanctions screening</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>FCA / regulatory status</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr><th>Filed financial indicators</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td><td class="on">&check;</td></tr>
+        <tr class="g"><th colspan="5">Deep intelligence</th></tr>
+        <tr><th>Public contract awards</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td></tr>
+        <tr><th>Commercial activity analysis</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td></tr>
+        <tr><th>Financial stability assessment</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td></tr>
+        <tr><th>Ownership complexity assessment</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td></tr>
+        <tr><th>Risk assessment</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td></tr>
+        <tr><th>Growth opportunity assessment</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td></tr>
+        <tr><th>Cross-source evidence analysis</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td></tr>
+        <tr><th>Head-specific recommendations</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td></tr>
+        <tr><th>Full downloadable report</th><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="off">&mdash;</td><td class="add">+</td></tr>
+      </tbody>
+      <tfoot><tr><th>Total per company researched</th><td>&pound;0.50<i>all-in</i></td><td>&pound;1.00<i>all-in</i></td><td>&pound;1.50<i>all-in</i></td><td>&pound;4.00<i>all-in</i></td></tr></tfoot>
+    </table>
+  </div>
+
+  </section>
+
+  <p class="note">Every level is researched and assembled by Medusa from sources we hold
+     directly. Licensed credit intelligence &mdash; credit rating, limit and payment risk
+     &mdash; is in development as a further level.</p>
+
+<p class="note">Each tier includes all preceding levels. Standard 1 Coin; Enriched adds 1; Cerberus adds 1; Pack adds 5. Heads are £19.99 each, one-off, and customer-owned configurations. <a href="pricing.html" style="color:var(--bronze)">Full pricing and subscriptions</a>.</p>
+</main>
+<footer class="site-footer">
+<div class="sf-inner">
+<div class="sf-brand"><img class="sf-logo" src="assets/logo.svg" alt=""><div class="sf-name">MEDUSA HEADS<small>COMMERCIAL OPPORTUNITY INTELLIGENCE</small></div>
+<p class="sf-tag"><b>Multi-Eyed Digital Understanding Scanner for Acquisition.</b> Describe the opportunity you want. Medusa interprets it, you verify the Head, and nothing runs until you approve it.</p>
+<div class="sf-rule">MEDUSA INTERPRETS. YOU VERIFY.</div></div>
+<div class="sf-col"><h4>PRODUCT</h4><a href="index.html">Build a Head</a><a href="homepage.html">Overview</a><a href="build-your-head.html">Build your Head</a><a href="review-your-head.html">Review your Head</a><a href="medusa-heads-page-10-my-heads.html">My Heads</a><a href="my-challenges.html">My Challenges &amp; Results</a><a href="pricing.html">Pricing</a><a href="intelligence-levels.html" aria-current="page">Intelligence levels</a><a href="cost-calculator.html">Cost calculator</a><a href="pricing.html#cerberus-box">Cerberus verification</a><a href="founding-beta.html">Founding beta</a></div>
+<div class="sf-col"><h4>THE FLOW</h4><div class="sf-flow"><a href="index.html"><b>01</b><span>What are you seeking?</span></a><a href="medusa-heads-page-02-medusa-understands-v2.html"><b>02</b><span>Medusa understands</span></a><a href="medusa-heads-page-03-configure-your-head.html"><b>03</b><span>Configure your Head</span></a><a href="medusa-heads-page-04-can-medusa-see-it.html"><b>04</b><span>Can Medusa see it?</span></a><a href="medusa-heads-page-05-release-the-head.html"><b>05</b><span>Release the Head</span></a><a href="medusa-heads-page-06-hunt-results-v2.html"><b>06</b><span>Hunt results</span></a><a href="medusa-heads-page-07-pass-on-your-judgement.html"><b>07</b><span>Pass on your judgement</span></a><a href="medusa-heads-page-08-the-head-is-ready.html"><b>08</b><span>The Head is ready</span></a><a href="medusa-heads-page-09-choose-your-hunt.html"><b>09</b><span>Choose your hunt</span></a><a href="medusa-heads-page-10-my-heads.html"><b>10</b><span>My Heads</span></a></div></div>
+<div class="sf-col"><h4>COMPANY</h4><a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+</div>
+<div class="sf-bottom"><div><span>© 2026 MEDUSA HEADS · ALL PRICES EXCLUDE VAT WHERE APPLICABLE</span><span><b>MANY EYES · ONE PURPOSE</b></span></div></div>
+</footer>
+<script src="assets/site.js" defer></script>
+</body>
+</html>
